@@ -1,0 +1,48 @@
+{
+  "name": "longzhu-screen",
+  "version": "1.0.0",
+  "description": "HTML5 LONGZHU-SCREEN",
+  "main": "./dist/screen.js",
+  "module": "./src/screen.js",
+  "jsnext:main": "./src/screen.js",
+  "types": "",
+  "repository": {},
+  "keywords": [
+    "html5",
+    "javascript"
+  ],
+  "scripts": {
+    "dev": "gulp watch",
+    "build": "gulp release",
+    "sprite": "gulp sprite"
+  },
+  "dependencies": {
+    "es6-promise": "^4.1.0",
+    "loadjs": "^3.5.1",
+    "webworkify": "^1.4.0"
+  },
+  "devDependencies": {
+    "axios": "^0.17.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.18.13",
+    "browserify": "^13.1.1",
+    "browserify-derequire": "^0.9.4",
+    "browserify-versionify": "^1.0.6",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^1.2.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-header": "^1.8.8",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^2.1.1",
+    "gulp.spritesmith": "^6.8.0",
+    "opn": "^5.1.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.9.0"
+  },
+  "author": "longzhu",
+  "license": "Apache-2.0"
+}
