@@ -315,15 +315,15 @@ class SideScreen {
       //type:gift-geren  color:#ffcc00 //个人
       //type:gift-nahan  color:#00ccff//呐喊
       //type:gift-gonghui  color:#ff6600//公会
-      for (let qq = 100; qq < 100000; qq++) {
-        this.giftPool.push({
-          "user": "龙珠直播" + qq,
-          "achor": "龙珠直播" + qq,
-          "count": 333444,
-          "type": "gift-geren",
-          "color": "#ffcc00"
-        })
-      }
+      // for (let qq = 100; qq < 100000; qq++) {
+      //   this.giftPool.push({
+      //     "user": "龙珠直播" + qq,
+      //     "achor": "龙珠直播" + qq,
+      //     "count": 333444,
+      //     "type": "gift-geren",
+      //     "color": "#ffcc00"
+      //   })
+      // }
 
       ////////////龙珠大礼物////////////[END]//////////////////////////////////////////////////////////
       this._emitter.emit('complete');

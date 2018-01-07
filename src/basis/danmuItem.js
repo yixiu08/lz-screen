@@ -15,17 +15,17 @@ class DanmuItem {
     this.load = new createjs.LoadQueue(true);
     this.load.loadManifest(config);
     this.load.on('complete', () => {
-      setInterval(function () {
-        let math=Math.random();
-        if(math>0.3 && math<0.6){
-          this.addDanmu({user:'你好啊傻逼',achor:"傻逼你好",count:parseInt(math*100000),type:"yzcmghp"})
-        }else if(math>0 && math<=0.3){
-          this.addDanmu({user:'你好啊傻逼',achor:"傻逼你好",count:parseInt(math*100000),type:"yzcmmfp"})
-        }else if(math>0.6){
-          this.addDanmu({user:'你好啊傻逼',achor:"傻逼你好",count:parseInt(math*100000),type:"yzcmgrp"})
-        }
+      // setInterval(function () {
+      //   let math=Math.random();
+      //   if(math>0.3 && math<0.6){
+      //     this.addDanmu({user:'你好啊傻逼',achor:"傻逼你好",count:parseInt(math*100000),type:"yzcmghp"})
+      //   }else if(math>0 && math<=0.3){
+      //     this.addDanmu({user:'你好啊傻逼',achor:"傻逼你好",count:parseInt(math*100000),type:"yzcmmfp"})
+      //   }else if(math>0.6){
+      //     this.addDanmu({user:'你好啊傻逼',achor:"傻逼你好",count:parseInt(math*100000),type:"yzcmgrp"})
+      //   }
       
-      }.bind(this), 500)
+      // }.bind(this), 500)
     });
 
   }

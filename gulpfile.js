@@ -70,8 +70,8 @@ function doLint(paths, exit) {
         .pipe(exit ? eslint.failAfterError() : eslint.result(function () {}));
 }
 
-gulp.task('default', ['clean', 'lint', 'build']);
-gulp.task('release', ['clean', 'lint', 'build', 'minimize']);
+gulp.task('default', ['clean', 'build']);
+gulp.task('release', ['clean', 'build', 'minimize']);
 
 gulp.task('watch', ['clean'], function () {
     let gulpWatcher = gulp.watch(['gulpfile.js', 'src/**/*.js']);
@@ -104,7 +104,7 @@ gulp.task('lint', function () {
     return doLint(['gulpfile.js', 'src/**/*.js'], true);
 });
 
-gulp.task('build', ['clean', 'lint'], function () {
+gulp.task('build', ['clean'], function () {
     let b = browserify({
         entries: 'src/index.js',
         standalone: 'screenjs',
@@ -116,7 +116,7 @@ gulp.task('build', ['clean', 'lint'], function () {
     return doBundle(b);
 });
 
-gulp.task('minimize', ['lint', 'build'], function () {
+gulp.task('minimize', [ 'build'], function () {
     let options = {
         sourceMap: true,
         sourceMapIncludeSources: true,

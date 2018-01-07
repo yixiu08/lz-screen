@@ -12,12 +12,15 @@ class MainScreen {
     this.leftMain = new createjs.Container(); //左边显示区域
     this.centerMain = new createjs.Container() //中间显示区域
     this.rightMain = new createjs.Container(); //右边显示区域
-    this.leftMain.name="左边"
-    this.rightMain.name="右边"
-    this.config=config;
-    this.onlinetimer=null;//在线人数更新计时器
-    this.online=0;//在线人数
-    this._randomList= [ 1, 2, 3, 4, 5, 6, -6, -5, -4, -3, -2, -1 ];//在线随机数组
+
+    this.leftGift = new createjs.Container(); //左边礼物
+    this.rightGift = new createjs.Container(); //右边礼物
+    this.leftMain.name = "左边"
+    this.rightMain.name = "右边"
+    this.config = config;
+    this.onlinetimer = null; //在线人数更新计时器
+    this.online = 0; //在线人数
+    this._randomList = [1, 2, 3, 4, 5, 6, -6, -5, -4, -3, -2, -1]; //在线随机数组
     this.load = new createjs.LoadQueue(false);
     this.load.loadManifest(this.config);
     this.load.on('complete', () => {
@@ -44,8 +47,8 @@ class MainScreen {
       this.leftHeight = 920;
       // this.leftMain.addChild(leftSprite);
 
-      this.itemLeft=new DanmuItem(this.leftMain,this.config);
-      this.itemRight=new DanmuItem(this.rightMain,this.config);
+      this.itemLeft = new DanmuItem(this.leftMain, this.config);
+      this.itemRight = new DanmuItem(this.rightMain, this.config);
 
       let rightSprite = new createjs.Shape();
       rightSprite.graphics.beginFill("#000").drawRect(0, 0, 960, 920);
@@ -70,10 +73,18 @@ class MainScreen {
       this.container.addChild(this.allPerImg);
       this.allPerTxt = new createjs.Text(this._setNumChange("123456789"), "bold 60px 微软雅黑", "#fff");
       this.allPerTxt.x = this.allPerImg.x + 260
-      this.allPerTxt.y = (this.allPerImg.getBounds().height - this.allPerTxt.getBounds().height)/2+40;
+      this.allPerTxt.y = (this.allPerImg.getBounds().height - this.allPerTxt.getBounds().height) / 2 + 40;
       this.container.addChild(this.allPerTxt);
 
-      this.biggift=new BigGift(this.container);
+      this.biggiftLeft = new BigGift(this.leftGift);
+      this.biggiftRight = new BigGift(this.rightGift);
+
+      this.container.addChild(this.leftGift);
+      this.container.addChild(this.rightGift);
+      this.leftGift.x = this.leftMain.x
+      this.leftGift.y =   this.leftMain.y
+      this.rightGift.x = this.rightMain.x 
+      this.rightGift.y = this.rightMain.y 
 
       this._emitter.emit("complete")
     });
@@ -81,14 +92,41 @@ class MainScreen {
     parent.addChild(this.container);
   }
 
-  addDanmu(data){
+  addDanmu(data) {
     console.log(data)
-    if(data.type=="yzcmghp" || data.type=="yzcmmfp" || data.type=="yzcmgrp"){
-      if(data.count){
-        if(Math.random()<0.5){
+    if (data.type == "yzcmghp" || data.type == "yzcmmfp" || data.type == "yzcmgrp") {
+      if (data.count) {
+        if (Math.random() < 0.5) {
           this.itemLeft.addDanmu(data);
-        }else{
+        } else {
           this.itemRight.addDanmu(data);
+        }
+      }
+      if (data.count >= 3344) {
+        if (Math.random() < 0.5) {
+          if (data.type == "yzcmghp") {
+            this.biggiftLeft.addBigGift({
+              count: data.count,
+              type: 1
+            })
+          } else if (data.type == "yzcmgrp") {
+            this.biggiftLeft.addBigGift({
+              count: data.count,
+              type: 0
+            })
+          }
+        } else {
+          if (data.type == "yzcmghp") {
+            this.biggiftLeft.addBigGift({
+              count: data.count,
+              type: 1
+            })
+          } else if (data.type == "yzcmgrp") {
+            this.biggiftLeft.addBigGift({
+              count: data.count,
+              type: 0
+            })
+          }
         }
       }
     }
@@ -104,54 +142,44 @@ class MainScreen {
     this.stepupdateonline(value)
   }
 
-  stepupdateonline(value){
-    if(this.onlinetimer){
+  stepupdateonline(value) {
+    if (this.onlinetimer) {
       clearInterval(this.onlinetimer)
     }
-    let step=parseInt((value-this.online)/600);
+    let step = parseInt((value - this.online) / 600);
     this.setsteponline(step)
-    this.onlinetimer = setInterval(function()
-    {
+    this.onlinetimer = setInterval(function () {
       this.setsteponline(step);
     }.bind(this), 100);
   }
 
-  setsteponline(step){
+  setsteponline(step) {
     let temp = this.getOnlineStep(step);
     this.online += temp;
-    if (this.online < 0)
-    {
+    if (this.online < 0) {
       this.online = 0;
     }
     this.allPerTxt.text = this._setNumChange(parseInt(this.online));
-   
+
     this.allPerTxt.x = this.allPerImg.x + 260
-    this.allPerTxt.y = (this.allPerImg.getBounds().height - this.allPerTxt.getBounds().height )/2+40;
+    this.allPerTxt.y = (this.allPerImg.getBounds().height - this.allPerTxt.getBounds().height) / 2 + 40;
   }
-  getOnlineStep(step)
-  {
-      let temp = step;
-      if (Math.abs(temp) > 1)
-      {
-          if (temp > 0)
-          {
-              temp = Math.ceil(temp);
-          }
-          else
-          {
-              temp = Math.floor(temp);
-          }
+  getOnlineStep(step) {
+    let temp = step;
+    if (Math.abs(temp) > 1) {
+      if (temp > 0) {
+        temp = Math.ceil(temp);
+      } else {
+        temp = Math.floor(temp);
       }
-      else
-      {
-          temp = this.getRandomStep();
-      }
-      return temp || 0;
+    } else {
+      temp = this.getRandomStep();
+    }
+    return temp || 0;
   }
-  getRandomStep()
-  {
-      let randomIndex = Math.floor(Math.random() * this._randomList.length);
-      return this._randomList.slice(randomIndex, 1)[0];
+  getRandomStep() {
+    let randomIndex = Math.floor(Math.random() * this._randomList.length);
+    return this._randomList.slice(randomIndex, 1)[0];
   }
 
   _setNumChange(data) {
