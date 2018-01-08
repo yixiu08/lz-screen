@@ -15,6 +15,9 @@
             /* width: 100%;
             height: 100%; */
             background-color: #1e160d;
+            background: rgba(255, 255, 155, 0);
+            position: absolute;
+            top: 0;
         }
 
         .test {
@@ -25,6 +28,13 @@
             bottom: 0;
             overflow: hidden;
         }
+
+        #video {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            display:none
+        }
     </style>
 </head>
 
@@ -32,19 +42,23 @@
     <script src="//player.plures.net/prod/activity/createjs-2015.11.26.min.js"></script>
     <script src="../dist/screen.js"></script>
     <div class="test">
+        <video autoplay loop name="media" id="video" >
+            <source src="http://player.plures.net/prod/activity/yzcm2017/sp/zhuping.mp4" type="video/mp4">
+        </video>
         <canvas name="doCanvas" id="doCanvas" width="1697" height="1080"></canvas>
+
     </div>
     <script>
         function loadStage() {
 
             var mytype = GetQueryString("type");
             if (mytype != null && mytype.toString().length > 1) {
-                mytype=GetQueryString("type")
+                mytype = GetQueryString("type")
             }
 
             var element = document.getElementById('doCanvas');
             stage = screenjs.createStage(element, {
-                type:mytype
+                type: mytype
             });
         }
 

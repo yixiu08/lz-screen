@@ -7,7 +7,7 @@ import {
 } from 'timers';
 
 class SideScreen {
-  constructor(parent, config) {
+  constructor(parent, config,fire) {
     this.TAG = 'SideScreen';
     Log.v(this.TAG);
     this._width = null; //容器宽
@@ -73,6 +73,7 @@ class SideScreen {
       bg.x = 0;
       bg.y = 0;
       this.container.addChild(bg);
+      this.container.addChild(new createjs.Bitmap(fire))
       //标题加背景框
       let bg_a = new createjs.Bitmap(this.load.getResult('bg-a'))
       bg_a.x = 0;

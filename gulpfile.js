@@ -134,7 +134,7 @@ gulp.task('minimize', [ 'build'], function () {
     };
 
     return gulp.src('dist/screen.js')
-        .pipe(rename({extname: '.min.js'}))
+        .pipe(rename({extname:'-'+new Date().getTime().toString(32) +'.min.js'}))
         .pipe(sourcemaps.init({loadMaps: true}))
             .pipe(uglify(options))
             .on('error', console.error.bind(console))

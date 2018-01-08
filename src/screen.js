@@ -241,61 +241,114 @@ function createStage(...arg) {
         src: '//player.plures.net/prod/activity/yzcm2017/assets/ac-logo.png'
       },
     ];
+    let rankFire = [];
+    for (let num = 1; num < 5; num++) {
+      let rank = document.createElement("video");
+      rank.src = "//player.plures.net/prod/activity/yzcm2017/sp/" + num + ".mp4"
+      rank.autoplay = true;
+      rank.loop = true;
+      rankFire.push(rank)
+    }
     screenjs.rankWS = new WEBSOCKET('wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
     let card = new Card(screenjs.mainStage, c1, {
       name: "艾米酱",
-      "uid": 3708164
-    });
+      "roomid": 16085
+    }, rankFire);
     card.X = (216);
     let card2 = new Card(screenjs.mainStage, c2, {
       name: "小仙桃",
-      "uid": 68156446
-    });
+      "roomid": 2079594
+    }, rankFire);
     card2.X = (432) * 1 + 216;
     let card3 = new Card(screenjs.mainStage, c3, {
       name: "包子",
-      "uid": 41560286
-    });
+      "roomid": 613784
+    }, rankFire);
     card3.X = (432) * 2 + 216;
     let card4 = new Card(screenjs.mainStage, c4, {
       name: "一匹破狼",
-      "uid": 32888164
-    });
+      "roomid": 439499
+    }, rankFire);
     card4.X = (432) * 3 + 216;
     let card5 = new Card(screenjs.mainStage, c5, {
       name: "小甜饼",
-      "uid": 52646985
-    });
+      "roomid": 1847037
+    }, rankFire);
     card5.X = (432) * 4 + 216;
     card.on('complete', (e) => {
       // card.pScore = 5555;
       // card.changeRank(0);
       // card.out = true;
       // card.changeRank(4);
-    });
+    }, rankFire);
     screenjs.rankWS.on("onmessage", function (msg) {
       let obj = JSON.parse(msg);
       if (obj.type == "eventroomrank") {
         for (let index = 0; index < obj.msg.items.length; index++) {
-          if (card.uid == obj.msg.items[index].userId) {
-            card.pScore = obj.msg.items[index].score;
-            card.changeRank(obj.msg.items[index].rank);
+          if (card.roomid == obj.msg.items[index].roomId) {
+            if (obj.msg.f.length) {
+              if (obj.msg.f.indexOf(card.roomid) != -1) {
+                card.pScore = obj.msg.items[index].score;
+                card.changeRank(obj.msg.items[index].rank);
+              }else{
+                card.out=true;
+              }
+            } else {
+              card.pScore = obj.msg.items[index].score;
+              card.changeRank(obj.msg.items[index].rank);
+            }
           }
-          if (card5.uid == obj.msg.items[index].userId) {
-            card5.pScore = obj.msg.items[index].score;
-            card5.changeRank(obj.msg.items[index].rank);
+          if (card5.roomid == obj.msg.items[index].roomId) {
+            if (obj.msg.f.length) {
+              if (obj.msg.f.indexOf(card5.roomid) != -1) {
+                card5.pScore = obj.msg.items[index].score;
+                card5.changeRank(obj.msg.items[index].rank);
+              }else{
+                card5.out=true
+              }
+            } else {
+              card5.pScore = obj.msg.items[index].score;
+              card5.changeRank(obj.msg.items[index].rank);
+            }
           }
-          if (card2.uid == obj.msg.items[index].userId) {
-            card2.pScore = obj.msg.items[index].score;
-            card2.changeRank(obj.msg.items[index].rank);
+          if (card2.roomid == obj.msg.items[index].roomId) {
+            if (obj.msg.f.length) {
+              if (obj.msg.f.indexOf(card2.roomid) != -1) {
+                card2.pScore = obj.msg.items[index].score;
+                card2.changeRank(obj.msg.items[index].rank);
+              }else{
+                card2.out=true
+              }
+            } else {
+              card2.pScore = obj.msg.items[index].score;
+              card2.changeRank(obj.msg.items[index].rank);
+            }
           }
-          if (card3.uid == obj.msg.items[index].userId) {
-            card3.pScore = obj.msg.items[index].score;
-            card3.changeRank(obj.msg.items[index].rank);
+          if (card3.roomid == obj.msg.items[index].roomId) {
+            if (obj.msg.f.length) {
+              if (obj.msg.f.indexOf(card3.roomid) != -1) {
+                card3.pScore = obj.msg.items[index].score;
+                card3.changeRank(obj.msg.items[index].rank);
+              }else{
+                card3.out=true
+              }
+            } else {
+              card3.pScore = obj.msg.items[index].score;
+              card3.changeRank(obj.msg.items[index].rank);
+            }
           }
-          if (card4.uid == obj.msg.items[index].userId) {
-            card4.pScore = obj.msg.items[index].score;
-            card4.changeRank(obj.msg.items[index].rank);
+          if (card4.roomid == obj.msg.items[index].roomId) {
+            if (obj.msg.f.length) {
+              if (obj.msg.f.indexOf(card4.roomid) != -1) {
+                card4.pScore = obj.msg.items[index].score;
+                card4.changeRank(obj.msg.items[index].rank);
+              }else{
+                card4.out=true
+              }
+            } else {
+              card4.pScore = obj.msg.items[index].score;
+              card4.changeRank(obj.msg.items[index].rank);
+            }
           }
         }
       }
@@ -481,31 +534,39 @@ function createStage(...arg) {
         src: '//player.plures.net/prod/activity/yzcm2017/assets/ac-logo.png'
       },
     ];
+    let rankFire = [];
+    for (let num = 1; num < 5; num++) {
+      let rank = document.createElement("video");
+      rank.src = "//player.plures.net/prod/activity/yzcm2017/sp/" + num + ".mp4"
+      rank.autoplay = true;
+      rank.loop = true;
+      rankFire.push(rank)
+    }
     screenjs.rankWS = new WEBSOCKET('wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
     let card = new Card(screenjs.mainStage, c1, {
       name: "锐雯",
-      "uid":  53223789
-    });
+      "roomid": 1511916
+    }, rankFire);
     card.X = (216);
     let card2 = new Card(screenjs.mainStage, c2, {
       name: "婧baby",
-      "uid": 10908977
-    });
+      "roomid": 2218344
+    }, rankFire);
     card2.X = (432) * 1 + 216;
     let card3 = new Card(screenjs.mainStage, c3, {
       name: "金禾苗苗",
-      "uid": 52238348
-    });
+      "roomid": 1466603
+    }, rankFire);
     card3.X = (432) * 2 + 216;
     let card4 = new Card(screenjs.mainStage, c4, {
       name: "珮瑜",
-      "uid":  40272558
-    });
+      "roomid": 563131
+    }, rankFire);
     card4.X = (432) * 3 + 216;
     let card5 = new Card(screenjs.mainStage, c5, {
       name: "心爱sia",
-      "uid":  11173427
-    });
+      "roomid": 125348
+    }, rankFire);
     card5.X = (432) * 4 + 216;
     card.on('complete', (e) => {
       // card.pScore = 5555;
@@ -518,25 +579,70 @@ function createStage(...arg) {
       if (obj.type == "eventroomrank") {
         console.log(obj)
         for (let index = 0; index < obj.msg.items.length; index++) {
-          if (card.uid == obj.msg.items[index].userId) {
-            card.pScore = obj.msg.items[index].score;
-            card.changeRank(obj.msg.items[index].rank);
+          if (card.roomid == obj.msg.items[index].roomId) {
+            if (obj.msg.f.length) {
+              if (obj.msg.f.indexOf(card.roomid) != -1) {
+                card.pScore = obj.msg.items[index].score;
+                card.changeRank(obj.msg.items[index].rank);
+              }else{
+                card.out=true;
+              }
+            } else {
+              card.pScore = obj.msg.items[index].score;
+              card.changeRank(obj.msg.items[index].rank);
+            }
           }
-          if (card5.uid == obj.msg.items[index].userId) {
-            card5.pScore = obj.msg.items[index].score;
-            card5.changeRank(obj.msg.items[index].rank);
+          if (card5.roomid == obj.msg.items[index].roomId) {
+            if (obj.msg.f.length) {
+              if (obj.msg.f.indexOf(card5.roomid) != -1) {
+                card5.pScore = obj.msg.items[index].score;
+                card5.changeRank(obj.msg.items[index].rank);
+              }else{
+                card5.out=true;
+              }
+            } else {
+              card5.pScore = obj.msg.items[index].score;
+              card5.changeRank(obj.msg.items[index].rank);
+            }
           }
-          if (card2.uid == obj.msg.items[index].userId) {
-            card2.pScore = obj.msg.items[index].score;
-            card2.changeRank(obj.msg.items[index].rank);
+          if (card2.roomid == obj.msg.items[index].roomId) {
+            if (obj.msg.f.length) {
+              if (obj.msg.f.indexOf(card2.roomid) != -1) {
+                card2.pScore = obj.msg.items[index].score;
+                card2.changeRank(obj.msg.items[index].rank);
+              }else{
+                card2.out=true;
+              }
+            } else {
+              card2.pScore = obj.msg.items[index].score;
+              card2.changeRank(obj.msg.items[index].rank);
+            }
           }
-          if (card3.uid == obj.msg.items[index].userId) {
-            card3.pScore = obj.msg.items[index].score;
-            card3.changeRank(obj.msg.items[index].rank);
+          if (card3.roomid == obj.msg.items[index].roomId) {
+            if (obj.msg.f.length) {
+              if (obj.msg.f.indexOf(card3.roomid) != -1) {
+                card3.pScore = obj.msg.items[index].score;
+                card3.changeRank(obj.msg.items[index].rank);
+              }else{
+                card3.out=true;
+              }
+            } else {
+              card3.pScore = obj.msg.items[index].score;
+              card3.changeRank(obj.msg.items[index].rank);
+            }
           }
-          if (card4.uid == obj.msg.items[index].userId) {
-            card4.pScore = obj.msg.items[index].score;
-            card4.changeRank(obj.msg.items[index].rank);
+          if (card4.roomid == obj.msg.items[index].roomId) {
+            if (obj.msg.f.length) {
+              if (obj.msg.f.indexOf(card4.roomid) != -1) {
+                card4.pScore = obj.msg.items[index].score;
+                card4.changeRank(obj.msg.items[index].rank);
+              }else{
+                card4.out=true
+              }
+            } else {
+              card4.pScore = obj.msg.items[index].score;
+              card4.changeRank(obj.msg.items[index].rank);
+            }
           }
         }
       }
@@ -618,7 +724,11 @@ function createStage(...arg) {
         src: '//player.plures.net/prod/activity/yzcm2017/assets/nahan.png'
       },
     ];
-    let sidescreen = new SideScreen(screenjs.mainStage, sideConfig);
+    let rank = document.createElement("video");
+    rank.src = "//player.plures.net/prod/activity/yzcm2017/sp/ceping.mp4"
+    rank.autoplay = true;
+    rank.loop = true;
+    let sidescreen = new SideScreen(screenjs.mainStage, sideConfig,rank);
     let fmailyurl = "//rankapi.longzhu.com/ranklist/GetEventFamilyRankList";
     let userurl = "//rankapi.longzhu.com/ranklist/GetEventUserRankList";
     sidescreen.on("complete", (e) => {
@@ -712,6 +822,7 @@ function createStage(...arg) {
       src: "//player.plures.net/prod/activity/yzcm2017/assets/dm-nahan.png"
     }, ];
     screenjs.rankWS = new WEBSOCKET('wss://mbgows.plu.cn:8806/?room_id=2207730&group=0');
+    document.getElementById("video").style.display="block";
     let mainScreen = new MainScreen(screenjs.mainStage, mainConfig);
     mainScreen.on("complete", function () {
       console.log("mainScreen complete")

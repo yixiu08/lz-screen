@@ -2,7 +2,7 @@ import Log from '../utils/logger.js';
 import EventEmitter from 'events';
 
 class Card {
-  constructor(parent, config,data) {
+  constructor(parent, config, data, fire) {
     this._width = null;
     this._height = null;
     this.score = null; //分数
@@ -14,10 +14,11 @@ class Card {
     this.container = null;
     this.ranknow = null; //当前排名
     this.bgb_ranknum = null; //背面排名
-    this.rankNumber = 123456789; //火力值
+    this.rankNumber = 0; //火力值
     this.death = false; //被没被淘汰
-    this.UID=data.uid;
-    let ac_name =data.name; //主播名字
+    this.ROOMID = data.roomid;
+    let ac_name = data.name; //主播名字
+    this.fire = fire;
 
     this.TAG = 'Card';
     this._emitter = new EventEmitter();
@@ -44,6 +45,14 @@ class Card {
       bg.x = -this._width / 2;
       bg.y = 0;
       this.bga.addChild(bg);
+      //特效
+      this.video = new createjs.Container();
+      this.video.x = -this._width / 2;
+      this.bga.addChild(this.video)
+      if (this.video && this.video.numChildren) {
+        this.video.removeAllChildren();
+      }
+      this.video.addChild(new createjs.Bitmap(this.fire[3]))
       //背面背景
       let bbg = new createjs.Bitmap(this.load.getResult('bg-b'));
       bbg.x = -this._width / 2;
@@ -192,8 +201,12 @@ class Card {
 
   changeRank(value) {
     if (this.ranknow == value) return
-    this.ranknow =value;
-    value=value-1;
+    this.ranknow = value;
+    value = value - 1;
+    if (this.video && this.video.numChildren) {
+      this.video.removeAllChildren();
+    }
+    this.video.addChild(new createjs.Bitmap(this.fire[value > 2 ? 3 : value]))
     if (this.rnum) {
       this.rnumb.gotoAndStop(value)
       if (value > 2) {
@@ -300,10 +313,10 @@ class Card {
     return this._width;
   }
 
-  get uid() {
-    return this.UID;
+  get roomid() {
+    return this.ROOMID;
   }
- 
+
 
   destroy() {
     this._emitter.removeAllListeners();

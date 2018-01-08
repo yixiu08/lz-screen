@@ -4,7 +4,7 @@ import DanmuItem from '../basis/danmuItem.js'
 import BigGift from '../basis/bigGift.js'
 
 class MainScreen {
-  constructor(parent, config) {
+  constructor(parent, config, fire) {
     this.TAG = 'MainScreen';
     Log.v(this.TAG);
     this._emitter = new EventEmitter();
@@ -29,8 +29,7 @@ class MainScreen {
       this.mainHeight = bg.getBounds().height;
       bg.x = 0;
       bg.y = 0;
-      this.container.addChild(bg);
-
+      // this.container.addChild(bg);
 
       let centerSprite = new createjs.Shape();
       centerSprite.graphics.beginFill("green").drawRect(0, 0, 1348, 785);
@@ -39,8 +38,9 @@ class MainScreen {
       // this.centerMain.addChild(centerSprite);
 
       let centerkv = new createjs.Bitmap(this.load.getResult("kv"));
-      this.centerMain.addChild(centerkv);
+      // this.centerMain.addChild(centerkv);
 
+    //  this.container.addChild(new createjs.Bitmap(fire))
       let leftSprite = new createjs.Shape();
       leftSprite.graphics.beginFill("#000").drawRect(0, 0, 960, 920);
       this.leftWidht = 960;
@@ -71,8 +71,8 @@ class MainScreen {
       this.allPerImg.x = this.mainWidth - this.allPerImg.getBounds().width >> 1
       this.allPerImg.y = 40;
       this.container.addChild(this.allPerImg);
-      this.allPerTxt = new createjs.Text(this._setNumChange("123456789"), "bold 60px 微软雅黑", "#fff");
-      this.allPerTxt.x = this.allPerImg.x + 260
+      this.allPerTxt = new createjs.Text(this._setNumChange("0"), "bold 60px 微软雅黑", "#fff");
+      this.allPerTxt.x = this.allPerImg.x + 260 + (368 - this.allPerTxt.getBounds().width) / 2
       this.allPerTxt.y = (this.allPerImg.getBounds().height - this.allPerTxt.getBounds().height) / 2 + 40;
       this.container.addChild(this.allPerTxt);
 
@@ -82,9 +82,9 @@ class MainScreen {
       this.container.addChild(this.leftGift);
       this.container.addChild(this.rightGift);
       this.leftGift.x = this.leftMain.x
-      this.leftGift.y =   this.leftMain.y
-      this.rightGift.x = this.rightMain.x 
-      this.rightGift.y = this.rightMain.y 
+      this.leftGift.y = this.leftMain.y
+      this.rightGift.x = this.rightMain.x
+      this.rightGift.y = this.rightMain.y
 
       this._emitter.emit("complete")
     });
@@ -160,8 +160,7 @@ class MainScreen {
       this.online = 0;
     }
     this.allPerTxt.text = this._setNumChange(parseInt(this.online));
-
-    this.allPerTxt.x = this.allPerImg.x + 260
+    this.allPerTxt.x = this.allPerImg.x + 260 + (368 - this.allPerTxt.getBounds().width) / 2
     this.allPerTxt.y = (this.allPerImg.getBounds().height - this.allPerTxt.getBounds().height) / 2 + 40;
   }
   getOnlineStep(step) {
