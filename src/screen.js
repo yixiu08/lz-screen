@@ -301,7 +301,9 @@ function createStage(...arg) {
       // card.changeRank(4);
     }, rankFire);
     screenjs.rankWS.on("onmessage", function (msg) {
+      // msg='{"id":24829205951297,"type":"eventroomrank","msg":{"f":[],"phaseId":17,"groupId":23,"line":10,"total":10,"items":[{"roomId":1847037,"score":433687,"rank":1,"name":"一个磨人的小甜饼","domain":"xiaotianbing","avatar":"http://img2.plures.net/users/avatar/052/646/985/52646985/822d95408282df3dc3b91607698bc5b7.jpg","userId":52646985,"grade":38,"isLive":false},{"roomId":2218344,"score":400873,"rank":2,"name":"龙奇丶婧baby","domain":"m170111","avatar":"http://pic.plures.net/users/avatar/010/908/977/10908977/2d2ab2dc5228a39653f65a72ad5e1b20.jpg","userId":10908977,"grade":29,"isLive":false},{"roomId":1466603,"score":202766,"rank":3,"name":"我是金禾","domain":"x103005","avatar":"http://pic.plures.net/d7a1/1e20/cc64/93c7/88f4/c50a/e379/ca8a.avatar","userId":52238348,"grade":40,"isLive":false},{"roomId":439499,"score":199084,"rank":4,"name":"一匹破狼","domain":"170170","avatar":"http://img2.plures.net/users/avatar/032/888/164/32888164/ce7a034f582d6965f67de5afd15e346d.jpg","userId":32888164,"grade":28,"isLive":false},{"roomId":125348,"score":143877,"rank":5,"name":"心爱Sia","domain":"z160454","avatar":"http://img2.plures.net/users/avatar/011/173/427/11173427/a764b0771c9eb06794ad4a7f44706a77.jpg","userId":11173427,"grade":24,"isLive":false},{"roomId":1511916,"score":99612,"rank":6,"name":"综皇 小锐雯","domain":"153014","avatar":"http://pic.plures.net/users/avatar/053/223/789/53223789/8f1d86283dd168ced9b94e0e13a06101.jpg","userId":53223789,"grade":28,"isLive":false},{"roomId":563131,"score":64157,"rank":7,"name":"情久_珮瑜","domain":"m190933","avatar":"http://pic.plures.net/users/avatar/040/272/558/40272558/445a2fd08c2ff2137c32e59b532fdebb.jpg","userId":40272558,"grade":27,"isLive":false},{"roomId":16085,"score":58689,"rank":8,"name":"Aimee艾米酱","domain":"101823","avatar":"http://pic.plures.net/users/avatar/003/708/164/3708164/c977d5632e8075b1f968815443d42e41.jpg","userId":3708164,"grade":29,"isLive":false},{"roomId":613784,"score":57248,"rank":9,"name":"综皇-包子（欧阳）","domain":"y199999","avatar":"http://pic.plures.net/users/avatar/041/560/286/41560286/71ab85915258ada485f92c00294e170d.jpg","userId":41560286,"grade":38,"isLive":false},{"roomId":2079594,"score":46586,"rank":10,"name":"情久小仙桃","domain":"165239","avatar":"http://pic.plures.net/users/avatar/068/156/446/68156446/bda107a8ea15077f13f479bd210fe77c.png","userId":68156446,"grade":25,"isLive":false}]}}'
       let obj = JSON.parse(msg);
+      console.log(obj)
       if (obj.type == "eventroomrank") {
         for (let index = 0; index < obj.msg.items.length; index++) {
           if (card.roomid == obj.msg.items[index].roomId) {
@@ -310,7 +312,10 @@ function createStage(...arg) {
                 card.pScore = obj.msg.items[index].score;
                 card.changeRank(obj.msg.items[index].rank);
               } else {
-                card.out = true;
+                if(!card.out){
+                  card.out = true;
+                }
+                
               }
             } else {
               card.pScore = obj.msg.items[index].score;
@@ -323,7 +328,9 @@ function createStage(...arg) {
                 card5.pScore = obj.msg.items[index].score;
                 card5.changeRank(obj.msg.items[index].rank);
               } else {
-                card5.out = true
+                if(!card5.out){
+                  card5.out = true;
+                }
               }
             } else {
               card5.pScore = obj.msg.items[index].score;
@@ -336,7 +343,9 @@ function createStage(...arg) {
                 card2.pScore = obj.msg.items[index].score;
                 card2.changeRank(obj.msg.items[index].rank);
               } else {
-                card2.out = true
+                if(!card2.out){
+                  card2.out = true;
+                }
               }
             } else {
               card2.pScore = obj.msg.items[index].score;
@@ -349,7 +358,9 @@ function createStage(...arg) {
                 card3.pScore = obj.msg.items[index].score;
                 card3.changeRank(obj.msg.items[index].rank);
               } else {
-                card3.out = true
+                if(!card3.out){
+                  card3.out = true;
+                }
               }
             } else {
               card3.pScore = obj.msg.items[index].score;
@@ -362,7 +373,9 @@ function createStage(...arg) {
                 card4.pScore = obj.msg.items[index].score;
                 card4.changeRank(obj.msg.items[index].rank);
               } else {
-                card4.out = true
+                if(!card4.out){
+                  card4.out = true;
+                }
               }
             } else {
               card4.pScore = obj.msg.items[index].score;
@@ -623,7 +636,9 @@ function createStage(...arg) {
                 card.pScore = obj.msg.items[index].score;
                 card.changeRank(obj.msg.items[index].rank);
               } else {
-                card.out = true;
+                if(!card.out){
+                  card.out = true;
+                }
               }
             } else {
               card.pScore = obj.msg.items[index].score;
@@ -636,7 +651,9 @@ function createStage(...arg) {
                 card5.pScore = obj.msg.items[index].score;
                 card5.changeRank(obj.msg.items[index].rank);
               } else {
-                card5.out = true;
+                if(!card5.out){
+                  card5.out = true;
+                }
               }
             } else {
               card5.pScore = obj.msg.items[index].score;
@@ -649,7 +666,9 @@ function createStage(...arg) {
                 card2.pScore = obj.msg.items[index].score;
                 card2.changeRank(obj.msg.items[index].rank);
               } else {
-                card2.out = true;
+                if(!card2.out){
+                  card2.out = true;
+                }
               }
             } else {
               card2.pScore = obj.msg.items[index].score;
@@ -662,7 +681,9 @@ function createStage(...arg) {
                 card3.pScore = obj.msg.items[index].score;
                 card3.changeRank(obj.msg.items[index].rank);
               } else {
-                card3.out = true;
+                if(!card3.out){
+                  card3.out = true;
+                }
               }
             } else {
               card3.pScore = obj.msg.items[index].score;
@@ -675,6 +696,9 @@ function createStage(...arg) {
                 card4.pScore = obj.msg.items[index].score;
                 card4.changeRank(obj.msg.items[index].rank);
               } else {
+                if(!card4.out){
+                  card4.out = true;
+                }
                 card4.out = true
               }
             } else {
