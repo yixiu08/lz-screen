@@ -44,7 +44,7 @@ function createStage(...arg) {
   createjs.Ticker.setFPS(24);
   createjs.Ticker.addEventListener('tick', screenjs.mainStage);
   screenjs.mainStage.update();
-
+  screenjs.env = arg[1].env;
 
 
 
@@ -249,31 +249,50 @@ function createStage(...arg) {
       rank.loop = true;
       rankFire.push(rank)
     }
-    screenjs.rankWS = new WEBSOCKET('wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
-    let card = new Card(screenjs.mainStage, c1, {
+    screenjs.rankWS = new WEBSOCKET(screenjs.env == "test" ? "'wss://mbgows.plu.cn:8806/?room_id=8565&group=0'" : 'wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
+    let dataArr = [{
       name: "艾米酱",
       "roomid": 16085
-    }, rankFire);
-    card.X = (216);
-    let card2 = new Card(screenjs.mainStage, c2, {
+    }, {
       name: "小仙桃",
       "roomid": 2079594
-    }, rankFire);
-    card2.X = (432) * 1 + 216;
-    let card3 = new Card(screenjs.mainStage, c3, {
+    }, {
       name: "包子",
       "roomid": 613784
-    }, rankFire);
-    card3.X = (432) * 2 + 216;
-    let card4 = new Card(screenjs.mainStage, c4, {
+    }, {
       name: "一匹破狼",
       "roomid": 439499
-    }, rankFire);
-    card4.X = (432) * 3 + 216;
-    let card5 = new Card(screenjs.mainStage, c5, {
+    }, {
       name: "小甜饼",
       "roomid": 1847037
-    }, rankFire);
+    }];
+    if (screenjs.env == "test") {
+      dataArr = [{
+        name: "白鲨",
+        "roomid": 8895
+      }, {
+        name: "Vivi.道祺",
+        "roomid": 904104
+      }, {
+        name: "艾伦..",
+        "roomid": 895507
+      }, {
+        name: "上善若水",
+        "roomid": 924300
+      }, {
+        name: "PE谭校长",
+        "roomid": 957460
+      }];
+    }
+    let card = new Card(screenjs.mainStage, c1, dataArr[0], rankFire);
+    card.X = (216);
+    let card2 = new Card(screenjs.mainStage, c2, dataArr[1], rankFire);
+    card2.X = (432) * 1 + 216;
+    let card3 = new Card(screenjs.mainStage, c3, dataArr[2], rankFire);
+    card3.X = (432) * 2 + 216;
+    let card4 = new Card(screenjs.mainStage, c4, dataArr[3], rankFire);
+    card4.X = (432) * 3 + 216;
+    let card5 = new Card(screenjs.mainStage, c5, dataArr[4], rankFire);
     card5.X = (432) * 4 + 216;
     card.on('complete', (e) => {
       // card.pScore = 5555;
@@ -290,8 +309,8 @@ function createStage(...arg) {
               if (obj.msg.f.indexOf(card.roomid) != -1) {
                 card.pScore = obj.msg.items[index].score;
                 card.changeRank(obj.msg.items[index].rank);
-              }else{
-                card.out=true;
+              } else {
+                card.out = true;
               }
             } else {
               card.pScore = obj.msg.items[index].score;
@@ -303,8 +322,8 @@ function createStage(...arg) {
               if (obj.msg.f.indexOf(card5.roomid) != -1) {
                 card5.pScore = obj.msg.items[index].score;
                 card5.changeRank(obj.msg.items[index].rank);
-              }else{
-                card5.out=true
+              } else {
+                card5.out = true
               }
             } else {
               card5.pScore = obj.msg.items[index].score;
@@ -316,8 +335,8 @@ function createStage(...arg) {
               if (obj.msg.f.indexOf(card2.roomid) != -1) {
                 card2.pScore = obj.msg.items[index].score;
                 card2.changeRank(obj.msg.items[index].rank);
-              }else{
-                card2.out=true
+              } else {
+                card2.out = true
               }
             } else {
               card2.pScore = obj.msg.items[index].score;
@@ -329,8 +348,8 @@ function createStage(...arg) {
               if (obj.msg.f.indexOf(card3.roomid) != -1) {
                 card3.pScore = obj.msg.items[index].score;
                 card3.changeRank(obj.msg.items[index].rank);
-              }else{
-                card3.out=true
+              } else {
+                card3.out = true
               }
             } else {
               card3.pScore = obj.msg.items[index].score;
@@ -342,8 +361,8 @@ function createStage(...arg) {
               if (obj.msg.f.indexOf(card4.roomid) != -1) {
                 card4.pScore = obj.msg.items[index].score;
                 card4.changeRank(obj.msg.items[index].rank);
-              }else{
-                card4.out=true
+              } else {
+                card4.out = true
               }
             } else {
               card4.pScore = obj.msg.items[index].score;
@@ -542,31 +561,50 @@ function createStage(...arg) {
       rank.loop = true;
       rankFire.push(rank)
     }
-    screenjs.rankWS = new WEBSOCKET('wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
-    let card = new Card(screenjs.mainStage, c1, {
+    screenjs.rankWS = new WEBSOCKET(screenjs.env == "test" ? "'wss://mbgows.plu.cn:8806/?room_id=8565&group=0'" : 'wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
+    let dataArr = [{
       name: "锐雯",
       "roomid": 1511916
-    }, rankFire);
-    card.X = (216);
-    let card2 = new Card(screenjs.mainStage, c2, {
+    }, {
       name: "婧baby",
       "roomid": 2218344
-    }, rankFire);
-    card2.X = (432) * 1 + 216;
-    let card3 = new Card(screenjs.mainStage, c3, {
+    }, {
       name: "金禾苗苗",
       "roomid": 1466603
-    }, rankFire);
-    card3.X = (432) * 2 + 216;
-    let card4 = new Card(screenjs.mainStage, c4, {
+    }, {
       name: "珮瑜",
       "roomid": 563131
-    }, rankFire);
-    card4.X = (432) * 3 + 216;
-    let card5 = new Card(screenjs.mainStage, c5, {
+    }, {
       name: "心爱sia",
       "roomid": 125348
-    }, rankFire);
+    }];
+    if (screenjs.env == "test") {
+      dataArr = [{
+        name: "星途",
+        "roomid": 962042
+      }, {
+        name: "逆天花木兰",
+        "roomid": 903728
+      }, {
+        name: "焦点神话",
+        "roomid": 926311
+      }, {
+        name: "TV第一德莱文",
+        "roomid": 911352
+      }, {
+        name: "Vivi.美素",
+        "roomid": 904030
+      }];
+    }
+    let card = new Card(screenjs.mainStage, c1, dataArr[0], rankFire);
+    card.X = (216);
+    let card2 = new Card(screenjs.mainStage, c2, dataArr[1], rankFire);
+    card2.X = (432) * 1 + 216;
+    let card3 = new Card(screenjs.mainStage, c3, dataArr[2], rankFire);
+    card3.X = (432) * 2 + 216;
+    let card4 = new Card(screenjs.mainStage, c4, dataArr[3], rankFire);
+    card4.X = (432) * 3 + 216;
+    let card5 = new Card(screenjs.mainStage, c5, dataArr[4], rankFire);
     card5.X = (432) * 4 + 216;
     card.on('complete', (e) => {
       // card.pScore = 5555;
@@ -584,8 +622,8 @@ function createStage(...arg) {
               if (obj.msg.f.indexOf(card.roomid) != -1) {
                 card.pScore = obj.msg.items[index].score;
                 card.changeRank(obj.msg.items[index].rank);
-              }else{
-                card.out=true;
+              } else {
+                card.out = true;
               }
             } else {
               card.pScore = obj.msg.items[index].score;
@@ -597,8 +635,8 @@ function createStage(...arg) {
               if (obj.msg.f.indexOf(card5.roomid) != -1) {
                 card5.pScore = obj.msg.items[index].score;
                 card5.changeRank(obj.msg.items[index].rank);
-              }else{
-                card5.out=true;
+              } else {
+                card5.out = true;
               }
             } else {
               card5.pScore = obj.msg.items[index].score;
@@ -610,8 +648,8 @@ function createStage(...arg) {
               if (obj.msg.f.indexOf(card2.roomid) != -1) {
                 card2.pScore = obj.msg.items[index].score;
                 card2.changeRank(obj.msg.items[index].rank);
-              }else{
-                card2.out=true;
+              } else {
+                card2.out = true;
               }
             } else {
               card2.pScore = obj.msg.items[index].score;
@@ -623,8 +661,8 @@ function createStage(...arg) {
               if (obj.msg.f.indexOf(card3.roomid) != -1) {
                 card3.pScore = obj.msg.items[index].score;
                 card3.changeRank(obj.msg.items[index].rank);
-              }else{
-                card3.out=true;
+              } else {
+                card3.out = true;
               }
             } else {
               card3.pScore = obj.msg.items[index].score;
@@ -636,8 +674,8 @@ function createStage(...arg) {
               if (obj.msg.f.indexOf(card4.roomid) != -1) {
                 card4.pScore = obj.msg.items[index].score;
                 card4.changeRank(obj.msg.items[index].rank);
-              }else{
-                card4.out=true
+              } else {
+                card4.out = true
               }
             } else {
               card4.pScore = obj.msg.items[index].score;
@@ -728,41 +766,43 @@ function createStage(...arg) {
     rank.src = "//player.plures.net/prod/activity/yzcm2017/sp/ceping.mp4"
     rank.autoplay = true;
     rank.loop = true;
-    let sidescreen = new SideScreen(screenjs.mainStage, sideConfig,rank);
+    let sidescreen = new SideScreen(screenjs.mainStage, sideConfig, rank);
     let fmailyurl = "//rankapi.longzhu.com/ranklist/GetEventFamilyRankList";
     let userurl = "//rankapi.longzhu.com/ranklist/GetEventUserRankList";
     sidescreen.on("complete", (e) => {
       screenjs.rankWS.on("onmessage", function (msg) {
         console.log(msg)
-        if (msg.type == "gift") {
+        let obj = JSON.params(msg)
+        if (obj.type == "gift") {
           let giftData = {
-            user: msg.user.username,
-            "achor": msg.hostName,
-            "count": msg.number,
+            user: obj.msg.user.username,
+            "achor": obj.msg.hostName,
+            "count": obj.msg.number,
             "type": "gift-geren",
             "color": "#ffcc00"
           }
-          if (msg.itemType == "yzcmgrp") {
+          if (obj.itemType == "yzcmgrp") {
             giftData.type = "gift-geren";
             giftData.color = "#ffcc00";
-          } else if (msg.itemType == "yzcmghp") {
+          } else if (obj.itemType == "yzcmghp") {
             giftData.type = "gift-gonghui";
             giftData.color = "#ff6600";
-          } else if (msg.itemType == "yzcmmfp") {
+          } else if (obj.itemType == "yzcmmfp") {
             giftData.type = "gift-nahan";
             giftData.color = "#00ccff";
           }
-          if (msg.number >= 3344) {
+          if (obj.number >= 3344) {
             sidescreen.addGiftItem(giftData)
           }
         }
       }.bind(this))
 
-
+      let eventid=screenjs.env == "test" ? 13 : 10002;
+    
 
       axios.get(fmailyurl, {
         params: {
-          eventId: 10002,
+          eventId: eventid,
           startIndex: 0,
           maxResults: 3
         }
@@ -771,7 +811,7 @@ function createStage(...arg) {
       }).catch((e) => {});
       axios.get(userurl, {
         params: {
-          eventId: 10002,
+          eventId: eventid,
           startIndex: 0,
           maxResults: 3
         }
@@ -781,7 +821,7 @@ function createStage(...arg) {
       setInterval(function () {
         axios.get(fmailyurl, {
           params: {
-            eventId: 10002,
+            eventId: eventid,
             startIndex: 0,
             maxResults: 3
           }
@@ -790,7 +830,7 @@ function createStage(...arg) {
         }).catch((e) => {});
         axios.get(userurl, {
           params: {
-            eventId: 10002,
+            eventId: eventid,
             startIndex: 0,
             maxResults: 3
           }
@@ -822,17 +862,19 @@ function createStage(...arg) {
       src: "//player.plures.net/prod/activity/yzcm2017/assets/dm-nahan.png"
     }, ];
     screenjs.rankWS = new WEBSOCKET('wss://mbgows.plu.cn:8806/?room_id=2207730&group=0');
-    document.getElementById("video").style.display="block";
+    document.getElementById("video").style.display = "block";
     let mainScreen = new MainScreen(screenjs.mainStage, mainConfig);
     mainScreen.on("complete", function () {
       console.log("mainScreen complete")
       screenjs.rankWS.on("onmessage", function (msg) {
-        if (msg.type == "gift") {
+        let obj = JSON.parse(msg);
+        console.log(obj)
+        if (obj.type == "gift") {
           let danmuData = {
-            "user": msg.user.username,
-            "achor": msg.hostName,
-            "count": msg.number,
-            "type": msg.itemType
+            "user": obj.msg.user.username,
+            "achor": obj.msg.hostName,
+            "count": obj.msg.number,
+            "type": obj.msg.itemType
           }
           mainScreen.addDanmu(danmuData);
         }
@@ -897,6 +939,7 @@ screenjs.stage = null;
 screenjs.test = test;
 screenjs.mainStage = null;
 screenjs.rankWS = null;
+screenjs.env = "cn";
 screenjs.stageScale = [{
   "w": 2160,
   "h": 1080

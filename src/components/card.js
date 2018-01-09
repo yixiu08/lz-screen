@@ -223,6 +223,7 @@ class Card {
         }, 1000)
         .call(function () {
           this.rnum.gotoAndStop(value);
+          this.bgb_ranknum.gotoAndStop(value)
           this.rnum.alpha = 1;
           this.rnum.y = 733 - 165;
         }.bind(this));
