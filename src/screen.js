@@ -69,7 +69,7 @@ function createStage(...arg) {
       },
       {
         id: 'persion',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/n-1.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/photo/aimijiang.png'
       },
       {
         id: 'perbg',
@@ -107,7 +107,7 @@ function createStage(...arg) {
       },
       {
         id: 'persion',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/n-1.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/photo/xiaotxiantao.png'
       }, {
         id: 'perbg',
         src: '//player.plures.net/prod/activity/yzcm2017/assets/per.png'
@@ -142,7 +142,7 @@ function createStage(...arg) {
       },
       {
         id: 'persion',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/n-1.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/photo/baozi.png'
       }, {
         id: 'perbg',
         src: '//player.plures.net/prod/activity/yzcm2017/assets/per.png'
@@ -177,7 +177,7 @@ function createStage(...arg) {
       },
       {
         id: 'persion',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/n-1.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/photo/polang.png'
       }, {
         id: 'perbg',
         src: '//player.plures.net/prod/activity/yzcm2017/assets/per.png'
@@ -212,7 +212,7 @@ function createStage(...arg) {
       },
       {
         id: 'persion',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/n-1.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/photo/xiaotianbing.png'
       }, {
         id: 'perbg',
         src: '//player.plures.net/prod/activity/yzcm2017/assets/per.png'
@@ -249,7 +249,7 @@ function createStage(...arg) {
       rank.loop = true;
       rankFire.push(rank)
     }
-    screenjs.rankWS = new WEBSOCKET(screenjs.env == "test" ? "'wss://mbgows.plu.cn:8806/?room_id=8565&group=0'" : 'wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
+    screenjs.rankWS = new WEBSOCKET(screenjs.env == "test" ? "wss://mbgows.plu.cn:8806/?room_id=8565&group=0" : 'wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
     let dataArr = [{
       name: "艾米酱",
       "roomid": 16085
@@ -381,7 +381,7 @@ function createStage(...arg) {
       },
       {
         id: 'persion',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/n-1.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/photo/ruiwen.png'
       },
       {
         id: 'perbg',
@@ -419,7 +419,7 @@ function createStage(...arg) {
       },
       {
         id: 'persion',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/n-1.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/photo/jingbaby.png'
       }, {
         id: 'perbg',
         src: '//player.plures.net/prod/activity/yzcm2017/assets/per.png'
@@ -454,7 +454,7 @@ function createStage(...arg) {
       },
       {
         id: 'persion',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/n-1.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/photo/jinhe.png'
       }, {
         id: 'perbg',
         src: '//player.plures.net/prod/activity/yzcm2017/assets/per.png'
@@ -489,7 +489,7 @@ function createStage(...arg) {
       },
       {
         id: 'persion',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/n-1.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/photo/peiyu.png'
       }, {
         id: 'perbg',
         src: '//player.plures.net/prod/activity/yzcm2017/assets/per.png'
@@ -524,7 +524,7 @@ function createStage(...arg) {
       },
       {
         id: 'persion',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/n-1.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/photo/xinaisia.png'
       }, {
         id: 'perbg',
         src: '//player.plures.net/prod/activity/yzcm2017/assets/per.png'
@@ -561,7 +561,7 @@ function createStage(...arg) {
       rank.loop = true;
       rankFire.push(rank)
     }
-    screenjs.rankWS = new WEBSOCKET(screenjs.env == "test" ? "'wss://mbgows.plu.cn:8806/?room_id=8565&group=0'" : 'wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
+    screenjs.rankWS = new WEBSOCKET(screenjs.env == "test" ? "wss://mbgows.plu.cn:8806/?room_id=8565&group=0" : 'wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
     let dataArr = [{
       name: "锐雯",
       "roomid": 1511916
@@ -771,8 +771,9 @@ function createStage(...arg) {
     let userurl = "//rankapi.longzhu.com/ranklist/GetEventUserRankList";
     sidescreen.on("complete", (e) => {
       screenjs.rankWS.on("onmessage", function (msg) {
-        console.log(msg)
-        let obj = JSON.params(msg)
+        // msg='{"id":24829205941923,"type":"gift","msg":{"title":"呐喊","itemType":"yzcmmfp","time":"\/Date(1515509651263+0800)\/","number":3344,"combo":2,"comboId":1906,"user":{"avatar":"http://img2.plures.net/users/avatar/028/207/675/28207675/a414db4d3eb658ae7f84b39a81c7a771.png","sex":2,"geocode":130115,"status":0,"uid":28207675,"username":"杀我别用感情","grade":11,"newGrade":15},"taskMedal":[],"ppvip":"","hostName":"一匹破狼","isInteractive":false,"nobleLevel":0}}'
+        let obj = JSON.parse(msg)
+        console.log(obj)
         if (obj.type == "gift") {
           let giftData = {
             user: obj.msg.user.username,
@@ -781,24 +782,24 @@ function createStage(...arg) {
             "type": "gift-geren",
             "color": "#ffcc00"
           }
-          if (obj.itemType == "yzcmgrp") {
+          if (obj.msg.itemType == "yzcmgrp") {
             giftData.type = "gift-geren";
             giftData.color = "#ffcc00";
-          } else if (obj.itemType == "yzcmghp") {
+          } else if (obj.msg.itemType == "yzcmghp") {
             giftData.type = "gift-gonghui";
             giftData.color = "#ff6600";
-          } else if (obj.itemType == "yzcmmfp") {
+          } else if (obj.msg.itemType == "yzcmmfp") {
             giftData.type = "gift-nahan";
             giftData.color = "#00ccff";
           }
-          if (obj.number >= 3344) {
+          if (obj.msg.number >= 3344 || obj.msg.itemType == "yzcmgrp" || obj.msg.itemType == "yzcmghp" || obj.msg.itemType == "yzcmmfp") {
             sidescreen.addGiftItem(giftData)
           }
         }
       }.bind(this))
 
-      let eventid=screenjs.env == "test" ? 13 : 10002;
-    
+      let eventid = screenjs.env == "test" ? 13 : 10002;
+
 
       axios.get(fmailyurl, {
         params: {
@@ -867,6 +868,7 @@ function createStage(...arg) {
     mainScreen.on("complete", function () {
       console.log("mainScreen complete")
       screenjs.rankWS.on("onmessage", function (msg) {
+        // msg='{"id":24829205941923,"type":"gift","msg":{"title":"呐喊","itemType":"yzcmghp","time":"\/Date(1515509651263+0800)\/","number":3344,"combo":2,"comboId":1906,"user":{"avatar":"http://img2.plures.net/users/avatar/028/207/675/28207675/a414db4d3eb658ae7f84b39a81c7a771.png","sex":2,"geocode":130115,"status":0,"uid":28207675,"username":"杀我别用感情","grade":11,"newGrade":15},"taskMedal":[],"ppvip":"","hostName":"一匹破狼","isInteractive":false,"nobleLevel":0}}'
         let obj = JSON.parse(msg);
         console.log(obj)
         if (obj.type == "gift") {
@@ -876,7 +878,9 @@ function createStage(...arg) {
             "count": obj.msg.number,
             "type": obj.msg.itemType
           }
-          mainScreen.addDanmu(danmuData);
+          if(danmuData.type=="yzcmmfp"||danmuData.type=="yzcmgrp"||danmuData.type=="yzcmghp"){
+            mainScreen.addDanmu(danmuData);
+          }
         }
 
       }.bind(this));

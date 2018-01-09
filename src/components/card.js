@@ -109,8 +109,10 @@ class Card {
       this.bgb.addChild(this.bscore);
       //人物照片
       let per = new createjs.Bitmap(this.load.getResult('persion'));
-      per.x = -per.getBounds().width >> 1;
-      per.y = this._height - per.getBounds().height;
+      per.scaleX = 432 / per.getBounds().width;
+      per.scaleY = 1080 / per.getBounds().height;
+      per.x = -per.getBounds().width * per.scaleX >> 1;
+      // per.y = this._height - per.getBounds().height;
       this.bga.addChild(per);
 
       let permask = new createjs.Bitmap(this.load.getResult("perbg"));

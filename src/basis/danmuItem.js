@@ -25,7 +25,7 @@ class DanmuItem {
       //     this.addDanmu({user:'你好啊傻逼',achor:"傻逼你好",count:parseInt(math*100000),type:"yzcmgrp"})
       //   }
       
-      // }.bind(this), 500)
+      // }.bind(this), 50)
     });
 
   }

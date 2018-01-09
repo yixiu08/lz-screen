@@ -13,6 +13,8 @@ class MainScreen {
     this.centerMain = new createjs.Container() //中间显示区域
     this.rightMain = new createjs.Container(); //右边显示区域
 
+
+    this.playLeft = true; //是不是在左边播放
     this.leftGift = new createjs.Container(); //左边礼物
     this.rightGift = new createjs.Container(); //右边礼物
     this.leftMain.name = "左边"
@@ -40,7 +42,7 @@ class MainScreen {
       let centerkv = new createjs.Bitmap(this.load.getResult("kv"));
       // this.centerMain.addChild(centerkv);
 
-    //  this.container.addChild(new createjs.Bitmap(fire))
+      //  this.container.addChild(new createjs.Bitmap(fire))
       let leftSprite = new createjs.Shape();
       leftSprite.graphics.beginFill("#000").drawRect(0, 0, 960, 920);
       this.leftWidht = 960;
@@ -93,7 +95,6 @@ class MainScreen {
   }
 
   addDanmu(data) {
-    console.log(data)
     if (data.type == "yzcmghp" || data.type == "yzcmmfp" || data.type == "yzcmgrp") {
       if (data.count) {
         if (Math.random() < 0.5) {
@@ -103,7 +104,9 @@ class MainScreen {
         }
       }
       if (data.count >= 3344) {
-        if (Math.random() < 0.5) {
+        console.log("biggift====>",this.playLeft)
+        if (this.playLeft) {
+          this.playLeft = false;
           if (data.type == "yzcmghp") {
             this.biggiftLeft.addBigGift({
               count: data.count,
@@ -116,13 +119,14 @@ class MainScreen {
             })
           }
         } else {
+          this.playLeft = true;
           if (data.type == "yzcmghp") {
-            this.biggiftLeft.addBigGift({
+            this.biggiftRight.addBigGift({
               count: data.count,
               type: 1
             })
           } else if (data.type == "yzcmgrp") {
-            this.biggiftLeft.addBigGift({
+            this.biggiftRight.addBigGift({
               count: data.count,
               type: 0
             })

@@ -52,7 +52,7 @@ class BigGift {
     }.bind(this), 2000)
     // setInterval(function () {
     //   this.addBigGift({
-    //     count: parseInt(9876543210),
+    //     count: parseInt(334455),
     //     type: Math.random() > 0.5 ? 0 : 1
     //   })
     // }.bind(this), 1000)

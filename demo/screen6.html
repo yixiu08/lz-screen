@@ -40,7 +40,7 @@
 
 <body style="overflow:hidden">
     <script src="//player.plures.net/prod/activity/createjs-2015.11.26.min.js"></script>
-    <script src="//player.plures.net/prod/activity/yzcm2017/screen-1c3aohilp.min.js"></script>
+    <script src="//player.plures.net/prod/activity/yzcm2017/screen-1c3d98n62.js"></script>
     <div class="test">
         <video autoplay loop name="media" id="video">
             <source src="http://player.plures.net/prod/activity/yzcm2017/sp/zhuping.mp4" type="video/mp4">
@@ -55,9 +55,14 @@
                 mytype = GetQueryString("type")
             }
 
+            var env = GetQueryString("env");
+            if (env != null && env.toString().length > 1) {
+                env = GetQueryString("env")
+            }
             var element = document.getElementById('doCanvas');
             stage = screenjs.createStage(element, {
-                type: mytype
+                type: mytype,
+                env: env
             });
         }
 
