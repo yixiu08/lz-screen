@@ -6,7 +6,7 @@ import {
 class DanmuItem {
   constructor(parent, config) {
     this.TAG = 'DanmuItem';
-    Log.v(this.TAG,parent);
+    Log.v(this.TAG, parent);
     this.stage = parent;
     console.log(this.stage.name)
     this.stageWidth = 960;
@@ -24,20 +24,36 @@ class DanmuItem {
       //   }else if(math>0.6){
       //     this.addDanmu({user:'你好啊傻逼',achor:"傻逼你好",count:parseInt(math*100000),type:"yzcmgrp"})
       //   }
-      
+
       // }.bind(this), 50)
     });
 
   }
 
   addDanmu(data) {
-    let color={color:"#433200",type:"dm-geren",bg:"#ffc000"};
-    if(data.type=="yzcmgrp"){
-      color={color:"#433200",type:"dm-geren",bg:"#ffc000"};
-    }else if(data.type=="yzcmghp"){
-      color={color:"#4d1f00",type:"dm-gonghui",bg:"#ff6600"};
-    }else if(data.type=="yzcmmfp"){
-      color={color:"#002735",type:"dm-nahan",bg:"#00abea"};
+    let color = {
+      color: "#433200",
+      type: "dm-geren",
+      bg: "#ffc000"
+    };
+    if (data.type == "yzcmgrp") {
+      color = {
+        color: "#433200",
+        type: "dm-geren",
+        bg: "#ffc000"
+      };
+    } else if (data.type == "yzcmghp") {
+      color = {
+        color: "#4d1f00",
+        type: "dm-gonghui",
+        bg: "#ff6600"
+      };
+    } else if (data.type == "yzcmmfp") {
+      color = {
+        color: "#002735",
+        type: "dm-nahan",
+        bg: "#00abea"
+      };
     }
     let itemBg = new createjs.Container()
     let user = new createjs.Text(this._setNameIndex(data.user, 6), "bold 21px 微软雅黑", "#fff");
@@ -60,6 +76,7 @@ class DanmuItem {
     count_x.x = count.x + count.getBounds().width + 10
     count_x.y = 70 - count_x.getBounds().height >> 1
     itemBg.addChild(count_x);
+    console.log(color)
     let icon = new createjs.Bitmap(this.load.getResult(color.type));
     icon.scaleX = 85 / icon.getBounds().width;
     icon.scaleY = 90 / icon.getBounds().height;
@@ -142,7 +159,7 @@ class DanmuItem {
 
 
   allocOrigin() {
-    // return this.randomFromRect(this.stageWidth / 5 * 0.9, this.stageHeight * 1 / 5);
+    // return this.randomFromRect(this.stageWidth / 5 * 0.9, thisß.stageHeight * 1 / 5);
     return this.randomFromRect((this.stageWidth) / 5, this.stageHeight / 4);
 
   }
@@ -159,11 +176,11 @@ class DanmuItem {
   randomFromRect(width, height) {
     let centerX = this.stageWidth / 2;
     let centerY = this.stageHeight / 2;
-    let x = centerX - (width / 2) + Math.random() * width //- 50;
-    if(this.stage.name=="右边"){
-      x  -=50;
+    let x = centerX - (width / 2) + Math.random() * width-25 //- 50;
+    if (this.stage.name == "右边") {
+      x -= 25;
     }
-    
+
     let y = centerY - (height / 2) + Math.random() * height + 80;
     return [parseInt(x, 10), parseInt(y, 10)];
   }

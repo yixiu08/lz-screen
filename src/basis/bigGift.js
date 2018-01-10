@@ -47,15 +47,17 @@ class BigGift {
     setInterval(function () {
       if (this.giftArr.length && !this.playing) {
         let one = this.giftArr.shift();
-        this.playBigAnimation(one.count, one.type)
+        this.playBigAnimation(one.count, one.type, one.user, one.achor)
       }
     }.bind(this), 2000)
     // setInterval(function () {
     //   this.addBigGift({
-    //     count: parseInt(334455),
-    //     type: Math.random() > 0.5 ? 0 : 1
+    //     count: parseInt(11111),
+    //     type: Math.random() > 0.5 ? 0 : 1,
+    //     user: "h哈哈哈哈",
+    //     achor: "h呵呵呵呵呵"
     //   })
-    // }.bind(this), 1000)
+    // }.bind(this), 500)
   }
 
   addBigGift(data) {
@@ -63,7 +65,7 @@ class BigGift {
   }
 
   //播放动画
-  playBigAnimation(num, type) {
+  playBigAnimation(num, type, username, achorname) {
     this.playing = true;
     let bgSpr = this.getBgSpriteSheet(type)
     let gift_type = new createjs.Sprite(bgSpr, "0");
@@ -75,18 +77,65 @@ class BigGift {
         setTimeout(() => {
           gift_type.gotoAndPlay(0)
           this.getNumAnimation(num, this.geren)
+          this.showName(username, achorname)
         }, 1000);
       })
-    }else{
+    } else {
       this.geren.alpha = 1;
       this.geren.addChildAt(gift_type, 0);
       gift_type.gotoAndStop(0)
       setTimeout(() => {
         gift_type.gotoAndPlay(0)
         this.getNumAnimation(num, this.geren)
+        this.showName(username, achorname)
       }, 1000);
     }
-    
+
+  }
+
+  showName(user, achor) {
+    let image = new Image()
+    image.src = "//player.plures.net/prod/activity/yzcm2017/assets/hello.png";
+    image.onload = function () {
+      let imgname = new createjs.Container();
+      this.geren.addChild(imgname);
+      let img = new createjs.Bitmap(image);
+      imgname.addChild(img);
+      let uname = new createjs.Text(this._setNameIndex(user, 6), "21px 微软雅黑", "#ffcc66");
+      let songgei = new createjs.Text("送给", "17.5px 微软雅黑", "#fff");
+      let aname = new createjs.Text(this._setNameIndex(user, 6), "21px 微软雅黑", "#ffcc66");
+      imgname.addChild(uname)
+      imgname.addChild(songgei)
+      imgname.addChild(aname)
+
+      img.x = (1000 - img.getBounds().width) / 2 - 25;
+      songgei.x = (1000 - songgei.getBounds().width) / 2 - 25;
+      uname.x = songgei.x - 20 - uname.getBounds().width;
+      aname.x = songgei.x + 20 + songgei.getBounds().width;
+
+      songgei.y = img.getBounds().height - songgei.getBounds().height >> 1;
+      uname.y = img.getBounds().height - uname.getBounds().height >> 1;
+      aname.y = img.getBounds().height - aname.getBounds().height >> 1;
+
+      imgname.y = 875;
+      imgname.alpha = 0;
+      createjs.Tween.get(imgname, {
+          override: true
+        })
+        .to({
+          alpha: 1
+        }, 1000)
+        .call(function () {
+
+        }.bind(this));
+    }.bind(this)
+
+  }
+  _setNameIndex(data, index) {
+    if (data.length > index) {
+      return data.slice(0, index - 1) + '...'
+    }
+    return data
   }
 
   ///大额动画上的礼物数字
@@ -94,7 +143,7 @@ class BigGift {
     for (let hh = 0; hh < value.toString().length; hh++) {
       let numSpr = this.getNumSpriteSheet(value.toString().slice(hh, hh + 1))
       let num = new createjs.Sprite(numSpr, "0");
-      if(!numSpr.complete){
+      if (!numSpr.complete) {
         numSpr.on("complete", () => {
           num.x = 305 * hh / 2 + (1000 - (value.toString().length + 1) * (305 / 2)) / 2;
           num.y = (1000 - 302) / 2
@@ -122,7 +171,7 @@ class BigGift {
             num.addEventListener("tick", giftEnd);
           }
         })
-      }else{
+      } else {
         num.x = 305 * hh / 2 + (1000 - (value.toString().length + 1) * (305 / 2)) / 2;
         num.y = (1000 - 302) / 2
         screen.addChild(num);
@@ -149,7 +198,7 @@ class BigGift {
           num.addEventListener("tick", giftEnd);
         }
       }
-     
+
 
     }
   }

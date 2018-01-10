@@ -61,7 +61,7 @@ class MainScreen {
 
       this.container.addChild(this.centerMain);
       this.centerMain.x = this.mainWidth - this.centerWidth >> 1;
-      this.centerMain.y = this.mainHeight - this.centerHeight >> 1
+      this.centerMain.y = this.mainHeight - this.centerHeight >> 1;
       this.container.addChild(this.leftMain);
       this.leftMain.x = 50;
       this.leftMain.y = 80;
@@ -103,19 +103,24 @@ class MainScreen {
           this.itemRight.addDanmu(data);
         }
       }
-      if (data.count >= 3344) {
-        console.log("biggift====>",this.playLeft)
+      if (data.count >= 9999) {
+        console.log("biggift====>", this.playLeft)
         if (this.playLeft) {
           this.playLeft = false;
           if (data.type == "yzcmghp") {
             this.biggiftLeft.addBigGift({
               count: data.count,
-              type: 1
+              type: 1,
+              user: data.user,
+              achor: data.achor
             })
           } else if (data.type == "yzcmgrp") {
             this.biggiftLeft.addBigGift({
               count: data.count,
-              type: 0
+              type: 0,
+              user: data.user,
+              achor: data.achor
+
             })
           }
         } else {
@@ -123,12 +128,16 @@ class MainScreen {
           if (data.type == "yzcmghp") {
             this.biggiftRight.addBigGift({
               count: data.count,
-              type: 1
+              type: 1,
+              user: data.user,
+              achor: data.achor
             })
           } else if (data.type == "yzcmgrp") {
             this.biggiftRight.addBigGift({
               count: data.count,
-              type: 0
+              type: 0,
+              user: data.user,
+              achor: data.achor
             })
           }
         }
