@@ -70,12 +70,14 @@ class MainScreen {
       this.rightMain.y = 80;
 
       this.allPerImg = new createjs.Bitmap(this.load.getResult("allper"))
-      this.allPerImg.x = this.mainWidth - this.allPerImg.getBounds().width >> 1
-      this.allPerImg.y = 40;
+      this.allPerImg.scaleX=0.9
+      this.allPerImg.scaleY=0.9
+      this.allPerImg.x = this.mainWidth - 0.9*this.allPerImg.getBounds().width >> 1
+      this.allPerImg.y = 120;
       this.container.addChild(this.allPerImg);
       this.allPerTxt = new createjs.Text(this._setNumChange("0"), "bold 60px 微软雅黑", "#fff");
-      this.allPerTxt.x = this.allPerImg.x + 260 + (368 - this.allPerTxt.getBounds().width) / 2
-      this.allPerTxt.y = (this.allPerImg.getBounds().height - this.allPerTxt.getBounds().height) / 2 + 40;
+      this.allPerTxt.x = this.allPerImg.x + 260 + (368 - 0.9*this.allPerTxt.getBounds().width) / 2
+      this.allPerTxt.y = (0.9*this.allPerImg.getBounds().height - 0.9*this.allPerTxt.getBounds().height) / 2 + 40;
       this.container.addChild(this.allPerTxt);
 
       this.biggiftLeft = new BigGift(this.leftGift);
@@ -83,9 +85,9 @@ class MainScreen {
 
       this.container.addChild(this.leftGift);
       this.container.addChild(this.rightGift);
-      this.leftGift.x = this.leftMain.x
+      this.leftGift.x = this.leftMain.x+200
       this.leftGift.y = this.leftMain.y
-      this.rightGift.x = this.rightMain.x
+      this.rightGift.x = this.rightMain.x-200
       this.rightGift.y = this.rightMain.y
 
       this._emitter.emit("complete")
@@ -95,7 +97,7 @@ class MainScreen {
   }
 
   addDanmu(data) {
-    if (data.type == "yzcmghp" || data.type == "yzcmmfp" || data.type == "yzcmgrp") {
+    if (data.type == "yzcmghp"  || data.type == "yzcmgrp") {
       if (data.count) {
         if (Math.random() < 0.5) {
           this.itemLeft.addDanmu(data);
@@ -173,8 +175,8 @@ class MainScreen {
       this.online = 0;
     }
     this.allPerTxt.text = this._setNumChange(parseInt(this.online));
-    this.allPerTxt.x = this.allPerImg.x + 260 + (368 - this.allPerTxt.getBounds().width) / 2
-    this.allPerTxt.y = (this.allPerImg.getBounds().height - this.allPerTxt.getBounds().height) / 2 + 40;
+    this.allPerTxt.x = this.allPerImg.x + 0.9*260 + 0.9*(368 - this.allPerTxt.getBounds().width) / 2
+    this.allPerTxt.y = 0.9*(this.allPerImg.getBounds().height - this.allPerTxt.getBounds().height) / 2 + 120;
   }
   getOnlineStep(step) {
     let temp = step;

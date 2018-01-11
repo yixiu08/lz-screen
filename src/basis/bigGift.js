@@ -46,13 +46,14 @@ class BigGift {
     this.geren.x = 40;
     setInterval(function () {
       if (this.giftArr.length && !this.playing) {
+
         let one = this.giftArr.shift();
         this.playBigAnimation(one.count, one.type, one.user, one.achor)
       }
     }.bind(this), 2000)
     // setInterval(function () {
     //   this.addBigGift({
-    //     count: parseInt(11111),
+    //     count: parseInt(111111),
     //     type: Math.random() > 0.5 ? 0 : 1,
     //     user: "h哈哈哈哈",
     //     achor: "h呵呵呵呵呵"
@@ -67,10 +68,27 @@ class BigGift {
   //播放动画
   playBigAnimation(num, type, username, achorname) {
     this.playing = true;
-    let bgSpr = this.getBgSpriteSheet(type)
-    let gift_type = new createjs.Sprite(bgSpr, "0");
-    if (!bgSpr.complete) {
-      bgSpr.on("complete", () => {
+   
+    setTimeout(function(){
+      let bgSpr = this.getBgSpriteSheet(type)
+      let gift_type = new createjs.Sprite(bgSpr, "0");
+      console.log(bgSpr,bgSpr.complete,gift_type)
+
+      if (!bgSpr.complete) {
+        // this.playBigAnimation(num, type, username, achorname);
+        bgSpr.on("complete", () => {
+          console.log("礼物背景下载好了aaaaaaa")
+          this.geren.alpha = 1;
+          this.geren.addChildAt(gift_type, 0);
+          gift_type.gotoAndStop(0)
+          setTimeout(() => {
+            gift_type.gotoAndPlay(0)
+            this.getNumAnimation(num, this.geren)
+            this.showName(username, achorname)
+          }, 1000);
+        })
+      } else {
+        console.log("礼物背景下载好了")
         this.geren.alpha = 1;
         this.geren.addChildAt(gift_type, 0);
         gift_type.gotoAndStop(0)
@@ -79,17 +97,11 @@ class BigGift {
           this.getNumAnimation(num, this.geren)
           this.showName(username, achorname)
         }, 1000);
-      })
-    } else {
-      this.geren.alpha = 1;
-      this.geren.addChildAt(gift_type, 0);
-      gift_type.gotoAndStop(0)
-      setTimeout(() => {
-        gift_type.gotoAndPlay(0)
-        this.getNumAnimation(num, this.geren)
-        this.showName(username, achorname)
-      }, 1000);
-    }
+      }
+    }.bind(this), 100);
+    
+   
+   
 
   }
 
@@ -103,7 +115,7 @@ class BigGift {
       imgname.addChild(img);
       let uname = new createjs.Text(this._setNameIndex(user, 6), "21px 微软雅黑", "#ffcc66");
       let songgei = new createjs.Text("送给", "17.5px 微软雅黑", "#fff");
-      let aname = new createjs.Text(this._setNameIndex(user, 6), "21px 微软雅黑", "#ffcc66");
+      let aname = new createjs.Text(this._setNameIndex(achor, 6), "21px 微软雅黑", "#ffcc66");
       imgname.addChild(uname)
       imgname.addChild(songgei)
       imgname.addChild(aname)
@@ -154,8 +166,7 @@ class BigGift {
           }, 500 * hh);
           if (hh == value.toString().length - 1) {
             let giftEnd = function (e) {
-              if (e.target.currentFrame >= 119) {
-                e.target.removeEventListener("tick", giftEnd);
+                e.target.removeEventListener("animationend", giftEnd);
                 createjs.Tween.get(this.geren, {
                     override: true
                   })
@@ -166,9 +177,9 @@ class BigGift {
                     this.playing = false;
                     this.geren.removeAllChildren()
                   }.bind(this));
-              }
+              
             }.bind(this)
-            num.addEventListener("tick", giftEnd);
+            num.addEventListener("animationend", giftEnd);
           }
         })
       } else {
@@ -181,21 +192,19 @@ class BigGift {
         }, 500 * hh);
         if (hh == value.toString().length - 1) {
           let giftEnd = function (e) {
-            if (e.target.currentFrame >= 119) {
-              e.target.removeEventListener("tick", giftEnd);
-              createjs.Tween.get(this.geren, {
-                  override: true
-                })
-                .to({
-                  alpha: 0
-                }, 1000)
-                .call(function () {
-                  this.playing = false;
-                  this.geren.removeAllChildren()
-                }.bind(this));
-            }
+            e.target.removeEventListener("animationend", giftEnd);
+            createjs.Tween.get(this.geren, {
+                override: true
+              })
+              .to({
+                alpha: 0
+              }, 1000)
+              .call(function () {
+                this.playing = false;
+                this.geren.removeAllChildren()
+              }.bind(this));
           }.bind(this)
-          num.addEventListener("tick", giftEnd);
+          num.addEventListener("animationend", giftEnd);
         }
       }
 

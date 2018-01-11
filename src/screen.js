@@ -94,7 +94,7 @@ function createStage(...arg) {
       },
       {
         id: 'logo-lz',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/card-logo.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/assets/guapinglogo.png'
       },
       {
         id: 'ac-logo',
@@ -129,7 +129,7 @@ function createStage(...arg) {
       },
       {
         id: 'logo-lz',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/card-logo.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/assets/guapinglogo.png'
       },
       {
         id: 'ac-logo',
@@ -164,7 +164,7 @@ function createStage(...arg) {
       },
       {
         id: 'logo-lz',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/card-logo.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/assets/guapinglogo.png'
       },
       {
         id: 'ac-logo',
@@ -199,7 +199,7 @@ function createStage(...arg) {
       },
       {
         id: 'logo-lz',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/card-logo.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/assets/guapinglogo.png'
       },
       {
         id: 'ac-logo',
@@ -234,7 +234,7 @@ function createStage(...arg) {
       },
       {
         id: 'logo-lz',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/card-logo.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/assets/guapinglogo.png'
       },
       {
         id: 'ac-logo',
@@ -247,7 +247,18 @@ function createStage(...arg) {
       rank.src = "//player.plures.net/prod/activity/yzcm2017/sp/" + num + ".mp4"
       rank.autoplay = true;
       rank.loop = true;
+      // rank.load();
+      // rank.play();
       rankFire.push(rank)
+      screenjs.stage.appendChild(rank)
+      // rank.addEventListener("timeupdate",(e)=>{
+      //   if(parseInt(e.target.currentTime)>=parseInt(e.target.duration)-1){
+      //       // e.target.load();
+      //       e.target.currentTime=1;
+      //       // rank.play(1);
+      //     console.log(e,e.target.currentTime,e.target.duration)
+      //   }      
+      // })
     }
     screenjs.rankWS = new WEBSOCKET(screenjs.env == "test" ? "wss://mbgows.plu.cn:8806/?room_id=8565&group=0" : 'wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
     let dataArr = [{
@@ -260,7 +271,7 @@ function createStage(...arg) {
       name: "包子",
       "roomid": 613784
     }, {
-      name: "一匹破狼",
+      name: "破狼",
       "roomid": 439499
     }, {
       name: "小甜饼",
@@ -269,19 +280,19 @@ function createStage(...arg) {
     if (screenjs.env == "test") {
       dataArr = [{
         name: "白鲨",
-        "roomid": 8895
+        "roomid": 16085
       }, {
         name: "Vivi.道祺",
-        "roomid": 904104
+        "roomid": 125348
       }, {
         name: "艾伦..",
-        "roomid": 895507
+        "roomid": 439499
       }, {
         name: "上善若水",
-        "roomid": 924300
+        "roomid": 563131
       }, {
         name: "PE谭校长",
-        "roomid": 957460
+        "roomid": 613784
       }];
     }
     let card = new Card(screenjs.mainStage, c1, dataArr[0], rankFire);
@@ -298,6 +309,9 @@ function createStage(...arg) {
       // card.pScore = 5555;
       // card.changeRank(0);
       // card.out = true;
+      // card2.out = true;
+      // card3.out=true
+      // card4.out = true;
       // card5.out=true
       // card.changeRank(4);
 
@@ -441,7 +455,7 @@ function createStage(...arg) {
       },
       {
         id: 'logo-lz',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/card-logo.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/assets/guapinglogo.png'
       },
       {
         id: 'ac-logo',
@@ -476,7 +490,7 @@ function createStage(...arg) {
       },
       {
         id: 'logo-lz',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/card-logo.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/assets/guapinglogo.png'
       },
       {
         id: 'ac-logo',
@@ -511,7 +525,7 @@ function createStage(...arg) {
       },
       {
         id: 'logo-lz',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/card-logo.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/assets/guapinglogo.png'
       },
       {
         id: 'ac-logo',
@@ -546,7 +560,7 @@ function createStage(...arg) {
       },
       {
         id: 'logo-lz',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/card-logo.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/assets/guapinglogo.png'
       },
       {
         id: 'ac-logo',
@@ -581,7 +595,7 @@ function createStage(...arg) {
       },
       {
         id: 'logo-lz',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/card-logo.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/assets/guapinglogo.png'
       },
       {
         id: 'ac-logo',
@@ -604,7 +618,7 @@ function createStage(...arg) {
       name: "婧baby",
       "roomid": 2218344
     }, {
-      name: "金禾苗苗",
+      name: "金禾",
       "roomid": 1466603
     }, {
       name: "珮瑜",
@@ -616,19 +630,19 @@ function createStage(...arg) {
     if (screenjs.env == "test") {
       dataArr = [{
         name: "星途",
-        "roomid": 962042
+        "roomid": 1466603
       }, {
         name: "逆天花木兰",
-        "roomid": 903728
+        "roomid": 1847037
       }, {
         name: "焦点神话",
-        "roomid": 926311
+        "roomid": 1511916
       }, {
         name: "TV第一德莱文",
-        "roomid": 911352
+        "roomid": 2079594
       }, {
         name: "Vivi.美素",
-        "roomid": 904030
+        "roomid": 2097789
       }];
     }
     let card = new Card(screenjs.mainStage, c1, dataArr[0], rankFire);
@@ -645,6 +659,10 @@ function createStage(...arg) {
       // card.pScore = 5555;
       // card.changeRank(0);
       // card.out = true;
+      // card2.out = true;
+      // card3.out=true
+      // card4.out = true;
+      // card5.out=true
       // card.changeRank(4);
    
     screenjs.rankWS.on("onmessage", function (msg) {
@@ -761,7 +779,7 @@ function createStage(...arg) {
       },
       {
         id: 'bg-a',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/side-bg-a.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/assets/cepingbg1.png'
       },
       {
         id: 'dgh-1',
@@ -813,7 +831,7 @@ function createStage(...arg) {
       },
       {
         id: 'gift-item',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/gift-line.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/assets/toumingbg.png'
       },
       {
         id: 'gift-geren',
@@ -828,11 +846,9 @@ function createStage(...arg) {
         src: '//player.plures.net/prod/activity/yzcm2017/assets/nahan.png'
       },
     ];
-    let rank = document.createElement("video");
-    rank.src = "//player.plures.net/prod/activity/yzcm2017/sp/ceping.mp4"
-    rank.autoplay = true;
-    rank.loop = true;
-    let sidescreen = new SideScreen(screenjs.mainStage, sideConfig, rank);
+    document.getElementById("video").style.display = "block";
+    document.getElementById("video").src="//player.plures.net/prod/activity/yzcm2017/sp/cepingyasuo.mp4";
+    let sidescreen = new SideScreen(screenjs.mainStage, sideConfig);
     let fmailyurl = "//rankapi.longzhu.com/ranklist/GetEventFamilyRankList";
     let userurl = "//rankapi.longzhu.com/ranklist/GetEventUserRankList";
     sidescreen.on("complete", (e) => {
@@ -846,19 +862,19 @@ function createStage(...arg) {
             "achor": obj.msg.hostName,
             "count": obj.msg.number,
             "type": "gift-geren",
-            "color": "#ffcc00"
+            "color": "#d6a63e"
           }
           if (obj.msg.itemType == "yzcmgrp") {
             giftData.type = "gift-geren";
-            giftData.color = "#ffcc00";
+            giftData.color = "#d6a63e";
           } else if (obj.msg.itemType == "yzcmghp") {
             giftData.type = "gift-gonghui";
-            giftData.color = "#ff6600";
+            giftData.color = "#00abea";
           } else if (obj.msg.itemType == "yzcmmfp") {
             giftData.type = "gift-nahan";
             giftData.color = "#00ccff";
           }
-          if (obj.msg.itemType == "yzcmgrp" || obj.msg.itemType == "yzcmghp" || obj.msg.itemType == "yzcmmfp") {
+          if (obj.msg.itemType == "yzcmgrp" || obj.msg.itemType == "yzcmghp" ) {
             if (obj.msg.number >= 3344) {
               sidescreen.addGiftItem(giftData)
             }
@@ -923,16 +939,17 @@ function createStage(...arg) {
       src: "//player.plures.net/prod/activity/yzcm2017/assets/allPer.png"
     }, {
       id: "dm-geren",
-      src: "//player.plures.net/prod/activity/yzcm2017/assets/dm-geren.png"
+      src: "//player.plures.net/prod/activity/yzcm2017/assets/gerenicon.png"
     }, {
       id: "dm-gonghui",
-      src: "//player.plures.net/prod/activity/yzcm2017/assets/dm-gonghui.png"
+      src: "//player.plures.net/prod/activity/yzcm2017/assets/gonghuiicon.png"
     }, {
       id: "dm-nahan",
       src: "//player.plures.net/prod/activity/yzcm2017/assets/dm-nahan.png"
     }, ];
     screenjs.rankWS = new WEBSOCKET('wss://mbgows.plu.cn:8806/?room_id=' + (screenjs.env == "test" ? 2124150 : 2207730) + '&group=0');
     document.getElementById("video").style.display = "block";
+    document.getElementById("video").src="//player.plures.net/prod/activity/yzcm2017/sp/jialogo.mp4";
     let mainScreen = new MainScreen(screenjs.mainStage, mainConfig);
     mainScreen.on("complete", function () {
       console.log("mainScreen complete")
@@ -947,7 +964,7 @@ function createStage(...arg) {
             "count": obj.msg.number,
             "type": obj.msg.itemType
           }
-          if (danmuData.type == "yzcmmfp" || danmuData.type == "yzcmgrp" || danmuData.type == "yzcmghp") {
+          if (  danmuData.type == "yzcmgrp" || danmuData.type == "yzcmghp") {
             mainScreen.addDanmu(danmuData);
           }
         }

@@ -14,19 +14,19 @@ class DanmuItem {
 
     this.load = new createjs.LoadQueue(true);
     this.load.loadManifest(config);
-    this.load.on('complete', () => {
-      // setInterval(function () {
-      //   let math=Math.random();
-      //   if(math>0.3 && math<0.6){
-      //     this.addDanmu({user:'你好啊傻逼',achor:"傻逼你好",count:parseInt(math*100000),type:"yzcmghp"})
-      //   }else if(math>0 && math<=0.3){
-      //     this.addDanmu({user:'你好啊傻逼',achor:"傻逼你好",count:parseInt(math*100000),type:"yzcmmfp"})
-      //   }else if(math>0.6){
-      //     this.addDanmu({user:'你好啊傻逼',achor:"傻逼你好",count:parseInt(math*100000),type:"yzcmgrp"})
-      //   }
+    // this.load.on('complete', () => {
+    //   setInterval(function () {
+    //     let math=Math.random();
+    //     if(math>0.3 && math<0.6){
+    //       this.addDanmu({user:'你好啊傻逼',achor:"傻逼你好",count:parseInt(math*100000),type:"yzcmghp"})
+    //     }else if(math>0 && math<=0.3){
+    //       // this.addDanmu({user:'你好啊傻逼',achor:"傻逼你好",count:parseInt(math*100000),type:"yzcmmfp"})
+    //     }else if(math>0.6){
+    //       this.addDanmu({user:'你好啊傻逼',achor:"傻逼你好",count:parseInt(math*100000),type:"yzcmgrp"})
+    //     }
 
-      // }.bind(this), 50)
-    });
+    //   }.bind(this), 50)
+    // });
 
   }
 
@@ -34,19 +34,19 @@ class DanmuItem {
     let color = {
       color: "#433200",
       type: "dm-geren",
-      bg: "#ffc000"
+      bg: "#d6a63e"
     };
     if (data.type == "yzcmgrp") {
       color = {
-        color: "#433200",
+        color: "#6d370b",
         type: "dm-geren",
-        bg: "#ffc000"
+        bg: "#d6a63e"
       };
     } else if (data.type == "yzcmghp") {
       color = {
-        color: "#4d1f00",
+        color: "#ffff00",
         type: "dm-gonghui",
-        bg: "#ff6600"
+        bg: "#00abea"
       };
     } else if (data.type == "yzcmmfp") {
       color = {
@@ -60,7 +60,7 @@ class DanmuItem {
     user.x = 30;
     user.y = 70 - user.getBounds().height >> 1;
     itemBg.addChild(user);
-    let zs = new createjs.Text("赠送", "italic 18px 微软雅黑", "#fff0c4");
+    let zs = new createjs.Text("赠送", "bold italic 18px 微软雅黑", "#fff");
     zs.x = user.x + user.getBounds().width + 5;
     zs.y = user.y + (user.getBounds().height - zs.getBounds().height)
     itemBg.addChild(zs);
@@ -176,9 +176,9 @@ class DanmuItem {
   randomFromRect(width, height) {
     let centerX = this.stageWidth / 2;
     let centerY = this.stageHeight / 2;
-    let x = centerX - (width / 2) + Math.random() * width-25 //- 50;
+    let x = centerX - (width / 2) + Math.random() * width //- 50;
     if (this.stage.name == "右边") {
-      x -= 25;
+      x -= 100;
     }
 
     let y = centerY - (height / 2) + Math.random() * height + 80;

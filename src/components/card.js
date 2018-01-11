@@ -52,7 +52,6 @@ class Card {
       if (this.video && this.video.numChildren) {
         this.video.removeAllChildren();
       }
-      this.video.addChild(new createjs.Bitmap(this.fire[3]))
       //背面背景
       let bbg = new createjs.Bitmap(this.load.getResult('bg-b'));
       bbg.x = -this._width / 2;
@@ -203,6 +202,7 @@ class Card {
 
   changeRank(value) {
     if (this.ranknow == value) return
+    console.log("aaaaaaaaaaaaaaa",this.video.numChildren)
     this.ranknow = value;
     value = value - 1;
     if (this.video && this.video.numChildren) {
