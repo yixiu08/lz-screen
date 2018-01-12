@@ -8,11 +8,11 @@ class Card {
     for (let kk = 1; kk < 5; kk++) {
       for (let qq = 0; qq < 100; qq++) {
         if (qq.toString().length == 1) {
-          this.firePng.push("../../firepng/" + kk + "/" + kk + "_100" + qq + ".png")
+          this.firePng.push("//player.plures.net/prod/activity/yzcm2017/firepng/" + kk + "/" + kk + "_100" + qq + ".png")
         } else if (qq.toString().length == 2) {
-          this.firePng.push("../../firepng/" + kk + "/" + kk + "_10" + qq + ".png")
+          this.firePng.push("//player.plures.net/prod/activity/yzcm2017/firepng/" + kk + "/" + kk + "_10" + qq + ".png")
         } else if ((qq.toString().length == 3)) {
-          this.firePng.push("../../firepng/" + kk + "/" + kk + "_1" + qq + ".png")
+          this.firePng.push("//player.plures.net/prod/activity/yzcm2017/firepng/" + kk + "/" + kk + "_1" + qq + ".png")
         }
       }
     }
