@@ -82,13 +82,13 @@ class SideScreen {
       //标题加背景框
       let bg_a = new createjs.Bitmap(this.load.getResult('bg-a'))
       bg_a.x = 0;
-      bg_a.y = 0;
+      bg_a.y = 100+50;
       this.container.addChild(bg_a)
 
       ////////////龙珠大公会////////////[START]//////////////////////////////////////////////////////////
       this.dgh_no1 = new createjs.Bitmap(this.load.getResult('dgh-1'))
       this.dgh_no1.x = 90;
-      this.dgh_no1.y = 260+50;
+      this.dgh_no1.y = 260+50+100+50;
       this.container.addChild(this.dgh_no1)
 
       this.ghfm_no1 = new createjs.Bitmap(this.load.getResult('gh-fm'))
@@ -101,7 +101,7 @@ class SideScreen {
       this.dgh_no11 = new createjs.Bitmap(this.load.getResult('gh-fm11'));
       this.dghX = this.ghfm_no1.x + 25 + this.dgh_no1.getBounds().width;
       this.dgh_no11.x = this.dghX;
-      this.dgh_no11.y = 260+50;
+      this.dgh_no11.y = 260+50+100+50;
       this.container.addChild(this.dgh_no11)
 
       this.dgh_name_no1 = new createjs.Text(this._setNameIndex("情久传媒情久传", 6), "bold 40px 微软雅黑", "#ffe260");
@@ -121,7 +121,7 @@ class SideScreen {
       /////////////22222222222222///////////////////  
       this.dgh_no2 = new createjs.Bitmap(this.load.getResult('dgh-2'))
       this.dgh_no2.x = 90;
-      this.dgh_no2.y = 545+50;
+      this.dgh_no2.y = 545+50+100+50;
       this.container.addChild(this.dgh_no2)
 
       this.ghfm_no2 = new createjs.Bitmap(this.load.getResult('gh-fm'))
@@ -133,7 +133,7 @@ class SideScreen {
 
       this.dgh_no22 = new createjs.Bitmap(this.load.getResult('gh-fm22'));
       this.dgh_no22.x = this.dghX;
-      this.dgh_no22.y = 545+50;
+      this.dgh_no22.y = 545+50+100+50;
       this.container.addChild(this.dgh_no22)
 
       this.dgh_name_no2 = new createjs.Text(this._setNameIndex("情久传媒情久传情久传媒情久传", 7), "32px 微软雅黑", "#eeeeee");
@@ -153,7 +153,7 @@ class SideScreen {
       ///////////////333333333333333333/////////////////
       this.dgh_no3 = new createjs.Bitmap(this.load.getResult('dgh-3'))
       this.dgh_no3.x = 90;
-      this.dgh_no3.y = 780+50;
+      this.dgh_no3.y = 780+50+100+50;
       this.container.addChild(this.dgh_no3)
 
       this.ghfm_no3 = new createjs.Bitmap(this.load.getResult('gh-fm1'))
@@ -165,7 +165,7 @@ class SideScreen {
 
       this.dgh_no33 = new createjs.Bitmap(this.load.getResult('gh-fm33'));
       this.dgh_no33.x = this.dghX;
-      this.dgh_no33.y = 780+50;
+      this.dgh_no33.y = 780+50+100+50;
       this.container.addChild(this.dgh_no33)
 
       this.dgh_name_no3 = new createjs.Text(this._setNameIndex("雨泽电竞", 7), "32px 微软雅黑", "#e59850");
@@ -186,7 +186,7 @@ class SideScreen {
       ////////////龙珠大人物////////////[START]//////////////////////////////////////////////////////////
       this.drw_no1 = new createjs.Bitmap(this.load.getResult('drw-1'))
       this.drw_no1.x = 620;
-      this.drw_no1.y = 260;
+      this.drw_no1.y = 260+100+50;
       this.container.addChild(this.drw_no1)
 
       this.rw_fm1_mask = new createjs.Shape();
@@ -208,7 +208,7 @@ class SideScreen {
       this.drw_no11 = new createjs.Bitmap(this.load.getResult('gh-fm11'));
       this.drwX = this.rwfm_no1.x + this.drw_no1.getBounds().width + 50;
       this.drw_no11.x = this.drwX;
-      this.drw_no11.y = 260;
+      this.drw_no11.y = 260+100+50;
       this.container.addChild(this.drw_no11)
 
       this.drw_name_no1 = new createjs.Text(this._setNameIndex("轻轻摇摆", 7), "bold 40px 微软雅黑", "#ffe260");
@@ -228,7 +228,7 @@ class SideScreen {
       /////////////2222222222222222///////////////////
       this.drw_no2 = new createjs.Bitmap(this.load.getResult('drw-2'))
       this.drw_no2.x = 620;
-      this.drw_no2.y = 545;
+      this.drw_no2.y = 545+100+50;
       this.container.addChild(this.drw_no2)
 
       this.rw_fm1_mask1 = new createjs.Shape();
@@ -248,7 +248,7 @@ class SideScreen {
 
       this.drw_no22 = new createjs.Bitmap(this.load.getResult('gh-fm22'));
       this.drw_no22.x = this.drwX;
-      this.drw_no22.y = 545;
+      this.drw_no22.y = 545+100+50;
       this.container.addChild(this.drw_no22)
 
       this.drw_name_no2 = new createjs.Text(this._setNameIndex("黑暗星球", 7), "32px 微软雅黑", "#eeeeee");
@@ -268,7 +268,7 @@ class SideScreen {
       ///////////////33333333333333/////////////////
       this.drw_no3 = new createjs.Bitmap(this.load.getResult('drw-3'))
       this.drw_no3.x = 620;
-      this.drw_no3.y = 780;
+      this.drw_no3.y = 780+100+50;
       this.container.addChild(this.drw_no3)
 
       this.rw_fm1_mask2 = new createjs.Shape();
@@ -288,7 +288,7 @@ class SideScreen {
 
       this.drw_no33 = new createjs.Bitmap(this.load.getResult('gh-fm33'));
       this.drw_no33.x = this.drwX;
-      this.drw_no33.y = 780;
+      this.drw_no33.y = 780+100+50;
       this.container.addChild(this.drw_no33)
 
       this.drw_name_no3 = new createjs.Text(this._setNameIndex("蓝色星球布鲁斯", 7), "32px 微软雅黑", "#e59850");
@@ -308,28 +308,28 @@ class SideScreen {
       ////////////龙珠大人物////////////[END]//////////////////////////////////////////////////////////
       ////////////龙珠大礼物////////////[START]//////////////////////////////////////////////////////////
       let gift_mask = new createjs.Shape();
-      gift_mask.graphics.beginFill("#f00").drawRect(0, -50, 530, 770);
+      gift_mask.graphics.beginFill("#f00").drawRect(0, -50+100+50, 530, 770);
       this.container.addChild(gift_mask)
       gift_mask.alpha = 0;
       gift_mask.x = 1090;
       gift_mask.y = 200;
       this.giftBord.x = 1090;
-      this.giftBord.y = 200-50;
+      this.giftBord.y = 200-50+100+50;
       this.container.addChild(this.giftBord);
       this.giftBord.mask = gift_mask;
 
       //type:gift-geren  color:#ffcc00 //个人
       //type:gift-nahan  color:#00ccff//呐喊
       //type:gift-gonghui  color:#ff6600//公会
-      // for (let qq = 100; qq < 100000; qq++) {
-      //   this.giftPool.push({
-      //     "user": "龙珠直播" + qq,
-      //     "achor": "龙珠直播" + qq,
-      //     "count": 333444,
-      //     "type": "gift-geren",
-      //     "color": "#00abea"
-      //   })
-      // }
+      for (let qq = 100; qq < 100000; qq++) {
+        this.giftPool.push({
+          "user": "龙珠直播" + qq,
+          "achor": "龙珠直播" + qq,
+          "count": 333444,
+          "type": "gift-geren",
+          "color": "#00abea"
+        })
+      }
 
       ////////////龙珠大礼物////////////[END]//////////////////////////////////////////////////////////
       this._emitter.emit('complete');
