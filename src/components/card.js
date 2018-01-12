@@ -29,6 +29,9 @@ class Card {
         "0": [0, 99],
       }
     });
+    this.firesheet1.on("complete",function(e){
+      console.log("下载完成啦");
+    }.bind(this))
     this.firesheet2 = new createjs.SpriteSheet({
       "images": this.firePng.slice(100,200),
       "frames": {
@@ -63,15 +66,14 @@ class Card {
       }
     });
 
-    console.log(this.firesheet)
-    this.firesheet1.on("complete",function(e){
-      console.log("下载完成啦");
-    }.bind(this))
+    console.log(this.firesheet1)
+    
     this.num1=new createjs.Sprite(this.firesheet1,"0");
     this.num2=new createjs.Sprite(this.firesheet2,"0");
     this.num3=new createjs.Sprite(this.firesheet3,"0");
     this.num4=new createjs.Sprite(this.firesheet4,"0");
 
+    console.log("bbbbbb",this.num1,this.num2,this.num3,this.num4,"aaaaa");
 
     this._width = null;
     this._height = null;
@@ -274,7 +276,7 @@ class Card {
 
   changeRank(value) {
     if (this.ranknow == value) return
-    console.log("aaaaaaaaaaaaaaa",this.video.numChildren)
+    console.log("aaaaaaaaaaaaaaa",this.video.numChildren,value)
     this.ranknow = value;
     value = value - 1;
     if (this.video && this.video.numChildren) {

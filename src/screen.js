@@ -242,13 +242,6 @@ function createStage(...arg) {
       },
     ];
     let rankFire = [];
-    for (let num = 1; num < 5; num++) {
-      let rank = document.createElement("video");
-      rank.src = "//player.plures.net/prod/activity/yzcm2017/sp/" + num + ".mp4"
-      rank.autoplay = true;
-      rank.loop = true;
-      rankFire.push(rank)
-    }
     screenjs.rankWS = new WEBSOCKET(screenjs.env == "test" ? "wss://mbgows.plu.cn:8806/?room_id=8565&group=0" : 'wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
     let dataArr = [{
       name: "艾米酱",
@@ -592,13 +585,6 @@ function createStage(...arg) {
       },
     ];
     let rankFire = [];
-    for (let num = 1; num < 5; num++) {
-      let rank = document.createElement("video");
-      rank.src = "//player.plures.net/prod/activity/yzcm2017/sp/" + num + ".mp4"
-      rank.autoplay = true;
-      rank.loop = true;
-      rankFire.push(rank)
-    }
     screenjs.rankWS = new WEBSOCKET(screenjs.env == "test" ? "wss://mbgows.plu.cn:8806/?room_id=8565&group=0" : 'wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
     let dataArr = [{
       name: "锐雯",
@@ -937,6 +923,7 @@ function createStage(...arg) {
       src: "//player.plures.net/prod/activity/yzcm2017/assets/dm-nahan.png"
     }, ];
     screenjs.rankWS = new WEBSOCKET('wss://mbgows.plu.cn:8806/?room_id=' + (screenjs.env == "test" ? 2124150 : 2207730) + '&group=0');
+    screenjs.rankScore = new WEBSOCKET(screenjs.env == "test" ? "wss://mbgows.plu.cn:8806/?room_id=8565&group=0" : 'wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
     document.getElementById("video").style.display = "block";
     document.getElementById("video").src="//player.plures.net/prod/activity/yzcm2017/sp/jialogo.mp4";
     let mainScreen = new MainScreen(screenjs.mainStage, mainConfig);
@@ -957,25 +944,19 @@ function createStage(...arg) {
             mainScreen.addDanmu(danmuData);
           }
         }
-
       }.bind(this));
-      let online = "//roomapicdn.plu.cn/room/getonline"
-      axios.get(online, {
-        params: {
-          roomid: 2207730
-        }
-      }).then((e) => {
-        mainScreen.perNum = e.data.result;
-      }).catch((e) => {});
-      setInterval(function () {
-        axios.get(online, {
-          params: {
-            roomid: 2207730
+     let scoreAll=0;
+      screenjs.rankScore.on("onmessage",function(msg){
+        let obj=JSON.parse(msg);
+        console.log(obj)
+        if(obj.type=="eventroomrank"){
+          for (let index = 0; index < obj.msg.items.length; index++) {
+            scoreAll+=obj.msg.items[index].score;            
           }
-        }).then((e) => {
-          mainScreen.perNum = e.data.result;
-        }).catch((e) => {});
-      }.bind(this), 60000)
+          mainScreen.setAllFireScore(scoreAll)
+          scoreAll=0;
+        }
+      }.bind(this));
     }.bind(this))
   }
   restScale();
@@ -1018,6 +999,7 @@ screenjs.stage = null;
 screenjs.test = test;
 screenjs.mainStage = null;
 screenjs.rankWS = null;
+screenjs.rankScore=null;//主屏总活力ws
 screenjs.env = "cn";
 screenjs.stageScale = [{
   "w": 2160,

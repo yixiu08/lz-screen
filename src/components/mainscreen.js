@@ -168,6 +168,12 @@ class MainScreen {
     }.bind(this), 100);
   }
 
+  setAllFireScore(step){
+    this.allPerTxt.text = this._setNumChange(parseInt(step));
+    this.allPerTxt.x = this.allPerImg.x + 0.9*260 + 0.9*(368 - this.allPerTxt.getBounds().width) / 2
+    this.allPerTxt.y = 0.9*(this.allPerImg.getBounds().height - this.allPerTxt.getBounds().height) / 2 + 115;
+  }
+
   setsteponline(step) {
     let temp = this.getOnlineStep(step);
     this.online += temp;
