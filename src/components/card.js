@@ -3,6 +3,76 @@ import EventEmitter from 'events';
 
 class Card {
   constructor(parent, config, data, fire) {
+
+    this.firePng = [];
+    for (let kk = 1; kk < 5; kk++) {
+      for (let qq = 0; qq < 100; qq++) {
+        if (qq.toString().length == 1) {
+          this.firePng.push("../../firepng/" + kk + "/" + kk + "_100" + qq + ".png")
+        } else if (qq.toString().length == 2) {
+          this.firePng.push("../../firepng/" + kk + "/" + kk + "_10" + qq + ".png")
+        } else if ((qq.toString().length == 3)) {
+          this.firePng.push("../../firepng/" + kk + "/" + kk + "_1" + qq + ".png")
+        }
+      }
+    }
+
+    console.log(this.firePng.slice(100,200))
+    this.firesheet1 = new createjs.SpriteSheet({
+      "images": this.firePng.slice(0,100),
+      "frames": {
+        "height": 1080,
+        "width": 432,
+        "count": 100
+      },
+      "animations": {
+        "0": [0, 99],
+      }
+    });
+    this.firesheet2 = new createjs.SpriteSheet({
+      "images": this.firePng.slice(100,200),
+      "frames": {
+        "height": 1080,
+        "width": 432,
+        "count": 100
+      },
+      "animations": {
+        "0": [0, 99],
+      }
+    });
+    this.firesheet3 = new createjs.SpriteSheet({
+      "images": this.firePng.slice(200,300),
+      "frames": {
+        "height": 1080,
+        "width": 432,
+        "count": 100
+      },
+      "animations": {
+        "0": [0, 99],
+      }
+    });
+    this.firesheet4 = new createjs.SpriteSheet({
+      "images": this.firePng.slice(300,400),
+      "frames": {
+        "height": 1080,
+        "width": 432,
+        "count": 100
+      },
+      "animations": {
+        "0": [0, 99],
+      }
+    });
+
+    console.log(this.firesheet)
+    this.firesheet1.on("complete",function(e){
+      console.log("下载完成啦");
+    }.bind(this))
+    this.num1=new createjs.Sprite(this.firesheet1,"0");
+    this.num2=new createjs.Sprite(this.firesheet2,"0");
+    this.num3=new createjs.Sprite(this.firesheet3,"0");
+    this.num4=new createjs.Sprite(this.firesheet4,"0");
+
+
     this._width = null;
     this._height = null;
     this.score = null; //分数
@@ -52,8 +122,10 @@ class Card {
       if (this.video && this.video.numChildren) {
         this.video.removeAllChildren();
       }
+      this.video.addChild(this.num4)
       //背面背景
       let bbg = new createjs.Bitmap(this.load.getResult('bg-b'));
+      console.log(bbg.getBounds());
       bbg.x = -this._width / 2;
       bbg.y = 0;
       this.bgb.addChild(bbg);
@@ -208,7 +280,16 @@ class Card {
     if (this.video && this.video.numChildren) {
       this.video.removeAllChildren();
     }
-    this.video.addChild(new createjs.Bitmap(this.fire[value > 2 ? 3 : value]))
+    if(value==0){
+      this.video.addChild(this.num1)
+    }else if(value==1){
+      this.video.addChild(this.num2)
+    }else if(value==2){
+      this.video.addChild(this.num3)
+    }else if(value>2){
+      this.video.addChild(this.num4)
+    }
+    
     if (this.rnum) {
       this.rnumb.gotoAndStop(value)
       if (value > 2) {
@@ -263,6 +344,7 @@ class Card {
         }
         if (rb >= 1) {
           clearInterval(rotation)
+          rb=1;
         } else {
           rb += 0.1;
         }

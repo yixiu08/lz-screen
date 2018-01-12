@@ -77,7 +77,7 @@ class MainScreen {
       this.container.addChild(this.allPerImg);
       this.allPerTxt = new createjs.Text(this._setNumChange("0"), "bold 60px 微软雅黑", "#fff");
       this.allPerTxt.x = this.allPerImg.x + 260 + (368 - 0.9*this.allPerTxt.getBounds().width) / 2
-      this.allPerTxt.y = (0.9*this.allPerImg.getBounds().height - 0.9*this.allPerTxt.getBounds().height) / 2 + 40;
+      this.allPerTxt.y = (0.9*this.allPerImg.getBounds().height - 0.9*this.allPerTxt.getBounds().height) / 2 + 40*0.9;
       this.container.addChild(this.allPerTxt);
 
       this.biggiftLeft = new BigGift(this.leftGift);
@@ -176,7 +176,7 @@ class MainScreen {
     }
     this.allPerTxt.text = this._setNumChange(parseInt(this.online));
     this.allPerTxt.x = this.allPerImg.x + 0.9*260 + 0.9*(368 - this.allPerTxt.getBounds().width) / 2
-    this.allPerTxt.y = 0.9*(this.allPerImg.getBounds().height - this.allPerTxt.getBounds().height) / 2 + 120;
+    this.allPerTxt.y = 0.9*(this.allPerImg.getBounds().height - this.allPerTxt.getBounds().height) / 2 + 110;
   }
   getOnlineStep(step) {
     let temp = step;

@@ -90,7 +90,7 @@ function createStage(...arg) {
       },
       {
         id: 'bg-b',
-        src: '//player.plures.net/prod/activity/yzcm2017/assets/card-bg-b.png'
+        src: '//player.plures.net/prod/activity/yzcm2017/assets/guapingbg.png'
       },
       {
         id: 'logo-lz',
@@ -247,18 +247,7 @@ function createStage(...arg) {
       rank.src = "//player.plures.net/prod/activity/yzcm2017/sp/" + num + ".mp4"
       rank.autoplay = true;
       rank.loop = true;
-      // rank.load();
-      // rank.play();
       rankFire.push(rank)
-      screenjs.stage.appendChild(rank)
-      // rank.addEventListener("timeupdate",(e)=>{
-      //   if(parseInt(e.target.currentTime)>=parseInt(e.target.duration)-1){
-      //       // e.target.load();
-      //       e.target.currentTime=1;
-      //       // rank.play(1);
-      //     console.log(e,e.target.currentTime,e.target.duration)
-      //   }      
-      // })
     }
     screenjs.rankWS = new WEBSOCKET(screenjs.env == "test" ? "wss://mbgows.plu.cn:8806/?room_id=8565&group=0" : 'wss://mbgows.plu.cn:8806/?room_id=238817&group=0');
     let dataArr = [{

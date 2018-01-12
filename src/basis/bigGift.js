@@ -51,14 +51,14 @@ class BigGift {
         this.playBigAnimation(one.count, one.type, one.user, one.achor)
       }
     }.bind(this), 2000)
-    setInterval(function () {
-      this.addBigGift({
-        count: parseInt(111111),
-        type: Math.random() > 0.5 ? 0 : 1,
-        user: "h哈哈哈哈",
-        achor: "h呵呵呵呵呵"
-      })
-    }.bind(this), 500)
+    // setInterval(function () {
+    //   this.addBigGift({
+    //     count: parseInt(111111),
+    //     type: Math.random() > 0.5 ? 0 : 1,
+    //     user: "h哈哈哈哈",
+    //     achor: "h呵呵呵呵呵"
+    //   })
+    // }.bind(this), 500)
   }
 
   addBigGift(data) {
